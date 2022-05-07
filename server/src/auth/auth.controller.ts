@@ -18,6 +18,6 @@ export class AuthController {
   @UsePipes(new ValidationPipe())
   @HttpCode(200)
   async registration(@Body() dto:AuthDto) {
-    return this.registration(dto)
+    return this.authService.registration(dto)
   }
 }

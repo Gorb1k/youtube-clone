@@ -1,11 +1,10 @@
-import {IsEmail, IsString, MaxLength, MinLength} from "class-validator";
+import {IsEmail, IsEmpty, IsString, Length, MaxLength, MinLength} from "class-validator";
 
 export class AuthDto {
-    @IsEmail()
+    @IsEmail({}, {message: 'Invalid Email format'})
     readonly email:string
 
-    @MinLength(6, {message: 'Password is less than 6 characters!'})
-    @MaxLength(16, {message: 'Password is more than 16 characters!'})
+    @Length(4, 16, {message: 'min length is 6 characters and max is 16.'})
     @IsString()
     readonly password:string
 
