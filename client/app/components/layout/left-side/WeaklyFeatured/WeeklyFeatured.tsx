@@ -15,7 +15,7 @@ const WeeklyFeatured:FC = () => {
                 <div className="slider_wf">
                     <div className="video_item">
                         <div className="thumbnail">
-                            <img src="../../../../../public/img/main/1.jpg" alt=""/>
+                            <img src="img/main/1.jpg" alt=""/>
                             <time>16:55</time>
                         </div>
                         <div className="author">Micheal Adams</div>
@@ -28,7 +28,7 @@ const WeeklyFeatured:FC = () => {
 
                     <div className="video_item">
                         <div className="thumbnail">
-                            <img src="../../../../../public/img/main/2.jpg" alt=""/>
+                            <img src="img/main/2.jpg" alt=""/>
                             <time>07:23</time>
                         </div>
                         <div className="author">Dollie Cross</div>
@@ -41,7 +41,7 @@ const WeeklyFeatured:FC = () => {
 
                     <div className="video_item">
                         <div className="thumbnail">
-                            <img src="../../../../../public/img/main/3.jpg" alt=""/>
+                            <img src="img/main/3.jpg" alt=""/>
                             <time>16:55</time>
                         </div>
                         <div className="author">Micheal Adams</div>
@@ -58,10 +58,10 @@ const WeeklyFeatured:FC = () => {
             <div className="top_video">
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../../../public/img/main/3.jpg" alt=""/>
+                        <img src="img/main/3.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>

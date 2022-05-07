@@ -1,33 +1,22 @@
 import {FC} from 'react';
-import Sidebar from "../../layout/sidebar/Sidebar";
-import Header from "../../layout/header/Header";
-import WeeklyFeatured from "./WeaklyFeatured/WeeklyFeatured";
-import Line from "../../ui/Line";
-import Recommended from "./Recommended/Recommended";
 import RightSide from "../../layout/right-side/RightSide";
+import LeftSide from "../../layout/left-side/LeftSide";
+import Layout from "../../layout/Layout";
+import {useAuth} from "../../../hooks/useAuth";
 
 const Home: FC = () => {
-    return <main id="youtube_main">
-        <Sidebar/>
-        <section className="content">
 
-            <Header/>
+    const auth = useAuth()
 
+
+    return (
+        <Layout title='New Youtube - Best video'>
             <div id="wrapper_content">
-                <div className="left_side">
-                    <WeeklyFeatured/>
-
-                    <Line/>
-
-                    <Recommended/>
-
-                </div>
+                <LeftSide/>
                 <RightSide/>
             </div>
-
-        </section>
-    </main>
-
+        </Layout>
+    )
 };
 
 export default Home;

@@ -7,13 +7,13 @@ const Header:FC = () => {
             <div className="search_top">
                 <label>
                     <input type="text" placeholder="Search videos, stars or authors..."/>
-                    <img src="../../../public/img/common/search.svg" alt=""/>
+                    <img src="img/common/search.svg" alt=""/>
                 </label>
             </div>
             <div className="icons_right">
-                <a href="#"><img src="../../../public/img/common/plus.svg" alt=""/></a>
-                <a href="#"><img src="../../../public/img/common/review.svg" alt=""/></a>
-                <a href="#"><img src="../../../public/img/common/basket.svg" alt=""/></a>
+                <a href="#"><img src="img/common/plus.svg" alt=""/></a>
+                <a href="#"><img src="img/common/review.svg" alt=""/></a>
+                <a href="#"><img src="img/common/basket.svg" alt=""/></a>
             </div>
         </header>
     );

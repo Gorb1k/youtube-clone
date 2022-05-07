@@ -16,10 +16,10 @@ const Recommended:FC = () => {
             <div className="catalog">
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../public/img/main/4.jpg" alt=""/>
+                        <img src="img/main/4.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>
@@ -32,10 +32,10 @@ const Recommended:FC = () => {
 
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../public/img/main/5.jpg" alt=""/>
+                        <img src="img/main/5.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>
@@ -48,10 +48,10 @@ const Recommended:FC = () => {
 
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../public/img/main/6.jpg" alt=""/>
+                        <img src="img/main/6.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>
@@ -64,10 +64,10 @@ const Recommended:FC = () => {
 
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../public/img/main/13.jpg" alt=""/>
+                        <img src="img/main/13.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>
@@ -80,10 +80,10 @@ const Recommended:FC = () => {
 
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../public/img/main/8.jpg" alt=""/>
+                        <img src="img/main/8.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>
@@ -96,10 +96,10 @@ const Recommended:FC = () => {
 
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../public/img/main/9.jpg" alt=""/>
+                        <img src="img/main/9.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>
@@ -112,10 +112,10 @@ const Recommended:FC = () => {
 
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../public/img/main/2.jpg" alt=""/>
+                        <img src="img/main/2.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>
@@ -128,10 +128,10 @@ const Recommended:FC = () => {
 
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../public/img/main/11.jpg" alt=""/>
+                        <img src="img/main/11.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>
@@ -143,15 +143,15 @@ const Recommended:FC = () => {
                 </div>
 
                 <div className="video_item video_big_item">
-                    <img src="../../../public/img/main/12.jpg" alt="" className="img-responsive"/>
+                    <img src="img/main/12.jpg" alt="" className="img-responsive"/>
                 </div>
 
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../public/img/main/13.jpg" alt=""/>
+                        <img src="img/main/13.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>
@@ -164,10 +164,10 @@ const Recommended:FC = () => {
 
                 <div className="video_item">
                     <div className="thumbnail">
-                        <img src="../../../public/img/main/14.jpg" alt=""/>
+                        <img src="img/main/14.jpg" alt=""/>
                         <time>28:32</time>
                         <div className="avatar">
-                            <img src="../../../public/img/main/avatar.jpg" alt=""/>
+                            <img src="img/main/avatar.jpg" alt=""/>
                         </div>
                     </div>
                     <div className="author">Warren Munoz</div>
