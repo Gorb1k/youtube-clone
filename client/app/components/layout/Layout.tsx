@@ -1,7 +1,10 @@
 import {FC, PropsWithChildren} from "react";
+import Head from "next/head";
+import cn from 'classnames'
+
 import Sidebar from "./sidebar/Sidebar";
 import Header from "./header/Header";
-import Head from "next/head";
+import {useAuth} from "../../hooks/useAuth";
 
 
 interface ILayoutProps {
@@ -9,6 +12,9 @@ interface ILayoutProps {
 }
 
 const Layout:FC<PropsWithChildren<ILayoutProps>> = ({children, title}) => {
+
+    const {user} = useAuth()
+
     return (
         <>
             <Head>
@@ -16,7 +22,9 @@ const Layout:FC<PropsWithChildren<ILayoutProps>> = ({children, title}) => {
             </Head>
             <main id="youtube_main">
                 <Sidebar/>
-                <section className="content">
+                <section className={cn('content', {
+                    'content-full': !user
+                })}>
                     <Header/>
                     <div className='content-wrapper'>{children}</div>
                 </section>

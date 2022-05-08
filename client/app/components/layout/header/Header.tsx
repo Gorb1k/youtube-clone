@@ -1,4 +1,6 @@
 import {FC} from "react";
+import IconsRight from "./icons/IconsRight";
+
 
 
 const Header:FC = () => {
@@ -10,11 +12,7 @@ const Header:FC = () => {
                     <img src="img/common/search.svg" alt=""/>
                 </label>
             </div>
-            <div className="icons_right">
-                <a href="#"><img src="img/common/plus.svg" alt=""/></a>
-                <a href="#"><img src="img/common/review.svg" alt=""/></a>
-                <a href="#"><img src="img/common/basket.svg" alt=""/></a>
-            </div>
+            <IconsRight/>
         </header>
     );
 };

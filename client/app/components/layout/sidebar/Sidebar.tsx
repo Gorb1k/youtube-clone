@@ -5,10 +5,15 @@ import Image from "next/image";
 import logoImg from '../../../../public/img/common/logo.png'
 import avatarImg from '../../../../public/img/main/avatar.jpg'
 import Link from "next/link";
+import {useAuth} from "../../../hooks/useAuth";
 
 
 const Sidebar: FC = () => {
-    return (
+
+    const {user} = useAuth()
+
+    return user
+        ?
         <section className="sidebar">
             <Link href="/">
                 <a className="logo" rel='noreferrer'>
@@ -65,7 +70,8 @@ const Sidebar: FC = () => {
                 © 2020 Youtube, LLC
             </div>
         </section>
-    );
+        :
+        null
 };
 
 export default Sidebar;
