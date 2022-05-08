@@ -9,7 +9,6 @@ const Header:FC = () => {
                     <input type="text" placeholder="Search videos, stars or authors..."/>
                     <img src="img/common/search.svg" alt=""/>
                 </label>
-
             </div>
             <div className="icons_right">
                 <a href="#"><img src="img/common/plus.svg" alt=""/></a>
