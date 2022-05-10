@@ -18,9 +18,6 @@ module.exports = {
             opacity:0,
             transform: 'scale (0.9)'
           },
-          '50%': {
-            opacity:0.3
-          },
           '100%': {
             opacity:1,
             transform: 'scale (1)'

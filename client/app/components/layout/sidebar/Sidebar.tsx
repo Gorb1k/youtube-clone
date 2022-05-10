@@ -10,7 +10,7 @@ import {useAuth} from "../../../hooks/useAuth";
 
 const Sidebar: FC = () => {
 
-    const {user} = useAuth()
+    const {user, handleLogout} = useAuth()
 
     return user
         ?
@@ -65,7 +65,9 @@ const Sidebar: FC = () => {
                 <p>Light On</p>
             </div>
 
-            <a href="#" id="logout_btn">Logout</a>
+            <button id="logout_btn" onClick={handleLogout}>
+                Logout
+            </button>
             <div className="copy">
                 © 2020 Youtube, LLC
             </div>

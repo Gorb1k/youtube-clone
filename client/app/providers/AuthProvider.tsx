@@ -1,26 +1,47 @@
-import {createContext, Dispatch, FC, PropsWithChildren, SetStateAction, useState} from "react";
+import {createContext, Dispatch, FC, PropsWithChildren, SetStateAction, useEffect, useState} from "react";
+import {IAuthData} from "../services/auth/auth.helper";
+import Cookies from "js-cookie";
+import {AuthService} from "../services/auth/auth.service";
+import {useRouter} from "next/router";
 
-interface IContext {
-    user: {
-        email:string
-        _id:string
-    } | null
-    accessToken: string
-    setData: Dispatch<SetStateAction<Omit<IContext, "setData">>> | null
+
+interface IContext extends IAuthData {
+    setData:  Dispatch<SetStateAction<IAuthData>> | null
+    handleLogout: () => void
 }
 
+const initialAuthData = {user:null, accessToken: ''}
 
 export const AuthContext = createContext<IContext>({} as IContext)
 
 
 const AuthProvider:FC<PropsWithChildren<unknown>> = ({children}) => {
 
-    const [data, setData] = useState<Omit<IContext, 'setData'>>({user:null, accessToken: ''})
+    const [data, setData] = useState<IAuthData>(initialAuthData)
+    const {pathname} = useRouter()
 
+    const handleLogout = () => {
+        AuthService.logout()
+        setData(initialAuthData)
+    }
 
+    useEffect(() => {
+        const accessToken = Cookies.get('accessToken')
+        if (accessToken)  {
+            const user = localStorage.getItem('user') || ''
+            setData({
+                user: JSON.parse(user),
+                accessToken
+            })
+        }
+    },[])
+    useEffect(() => {
+        const accessToken = Cookies.get('accessToken')
+        if (!accessToken && !data.user) handleLogout()
+    },[pathname])
 
     return (
-        <AuthContext.Provider value={{...data, setData}}>
+        <AuthContext.Provider value={{...data, setData, handleLogout}}>
             {children}
         </AuthContext.Provider>
     );

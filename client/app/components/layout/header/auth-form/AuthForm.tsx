@@ -8,9 +8,15 @@ import Button from "../../../ui/button/Button";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {IAuthFields} from "./auth-form.interface";
 import {validEmail} from "./auth-form.constant";
+import {useOutside} from "../../../../hooks/useOutside";
+import {useMutation} from "react-query";
+import {AuthService} from "../../../../services/auth/auth.service";
+import {useAuth} from "../../../../hooks/useAuth";
 
 
 const AuthForm: FC = () => {
+
+    const {ref, setIsShow, isShow} = useOutside(false)
 
     const [type, setType] = useState<'login' | 'register'>('login')
 
@@ -18,21 +24,29 @@ const AuthForm: FC = () => {
         mode: 'onChange'
     })
 
+    const {setData} = useAuth()
+
+    const {error, mutate} = useMutation('login',(data:IAuthFields) => AuthService.login(data.email, data.password), {
+        onSuccess(data) {
+            setData && setData(data)
+        }
+    })
+
     const onSubmit: SubmitHandler<IAuthFields> = (data) => {
         if (type === 'login') {
-            console.log('LOGIN' ,data.email)
+           mutate(data)
         } else if (type === 'register') {
-            console.log('REGISTER',data.email)
+            console.log('REGISTER', data.email)
         }
 
     }
 
     return (
-        <div className={styles.wrapper}>
-            <button className={stylesIcons.button}>
+        <div className={styles.wrapper} ref={ref}>
+            <button className={stylesIcons.button} onClick={() => setIsShow(!isShow)}>
                 <FaUserCircle fill="#a4a4a4"/>
             </button>
-            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+            {isShow && <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <Input
                     {...register('email', {
                         required: 'Email is required!',
@@ -50,12 +64,13 @@ const AuthForm: FC = () => {
                             message: 'Please enter more than 6 characters'
                         }
                     })}
-                    placeholder={'Password'} error={errors.password}/>
+                    placeholder={'Password'} error={errors.password} type={'password'}/>
                 <div className={'mt-6 mb-1 text-center'}>
                     <Button className={'mt-2 mx-auto block'} onClick={() => setType("login")}>Login</Button>
                 </div>
                 <button onClick={() => setType("register")} className={styles.register}>Register</button>
-            </form>
+            </form>}
+
         </div>
     );
 };
