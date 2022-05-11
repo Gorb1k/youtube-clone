@@ -11,8 +11,7 @@ export class AuthService {
     constructor(
         @InjectModel(UserModel) private userModel: ModelType<UserModel>,
         private readonly jwtService: JwtService
-    ) {
-    }
+    ) {}
 
     async login(dto: AuthDto) {
         const user = await this.validateUser(dto)

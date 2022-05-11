@@ -1,25 +1,51 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
+import {InjectModel} from "nestjs-typegoose";
+import {UserModel} from "./user.model";
+import {ModelType} from "@typegoose/typegoose/lib/types";
+import {UserDto} from "./dto/user.dto";
+import {genSalt, hash} from "bcryptjs";
+import {getKeys} from "../utils/getKeys";
 
 
 @Injectable()
 export class UserService {
-  create(createUserDto) {
-    return 'This action adds a new user';
-  }
+    constructor(
+        @InjectModel(UserModel) private userModel: ModelType<UserModel>,
+    ) {
+    }
 
-  findAll() {
-    return `This action returns all user`;
-  }
+    async getById(_id: string) {
+        const user = await this.userModel.findById(_id)
+        if (!user) throw new UnauthorizedException('User is not found')
+        return user
+    }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
+    async updateProfile(_id: string, dto: UserDto) {
+        const user = await this.getById(_id)
 
-  update(id: number, updateUserDto) {
-    return `This action updates a #${id} user`;
-  }
+        const isSameUser = await this.userModel.findOne({email: dto.email})
+        if (isSameUser && _id !== isSameUser._id.toString()) throw new NotFoundException('Email is already existed')
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
-  }
+        if (dto.password) {
+            const salt = await genSalt(7)
+            user.password = await hash(dto.password, salt)
+        }
+
+        user.email = dto.email
+        user.description = dto.description
+        user.location = dto.location
+        user.bannerPath = dto.bannerPath
+        user.avatarPath = dto.avatarPath
+        await user.save()
+
+        return user
+    }
+
+    async getMostPopular() {
+        return this.userModel
+            .find({subscribersCount: {$gt: 0}})
+            .sort({subscribersCount: -1})
+            .exec()
+    }
+
 }

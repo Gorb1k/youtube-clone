@@ -1,33 +1,31 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Put,
+  UsePipes,
+  ValidationPipe,
+  HttpCode
+} from '@nestjs/common';
 import { UserService } from './user.service';
+import {UserDto} from "./dto/user.dto";
 
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
-  create(@Body() createUserDto) {
-    return this.userService.create(createUserDto);
+  @UsePipes(new ValidationPipe())
+  @HttpCode(200)
+  @Put('profile')
+  //TODO: AuthDecorator && UserDecorator
+  updateProfile(@Body() dto: UserDto) {
+    return this.userService.updateProfile('6276904694544c5832379265',dto);
   }
 
-  @Get()
-  findAll() {
-    return this.userService.findAll();
-  }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto) {
-    return this.userService.update(+id, updateUserDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userService.remove(+id);
-  }
 }
