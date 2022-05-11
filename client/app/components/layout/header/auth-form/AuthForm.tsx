@@ -26,7 +26,12 @@ const AuthForm: FC = () => {
 
     const {setData} = useAuth()
 
-    const {error, mutate} = useMutation('login',(data:IAuthFields) => AuthService.login(data.email, data.password), {
+    const {error:loginError, mutate:login} = useMutation('login',(data:IAuthFields) => AuthService.login(data.email, data.password), {
+        onSuccess(data) {
+            setData && setData(data)
+        }
+    })
+    const {error:registrationError, mutate:registration} = useMutation('registration',(data:IAuthFields) => AuthService.registration(data.email, data.password), {
         onSuccess(data) {
             setData && setData(data)
         }
@@ -34,9 +39,9 @@ const AuthForm: FC = () => {
 
     const onSubmit: SubmitHandler<IAuthFields> = (data) => {
         if (type === 'login') {
-           mutate(data)
+            login(data)
         } else if (type === 'register') {
-            console.log('REGISTER', data.email)
+            registration(data)
         }
 
     }
