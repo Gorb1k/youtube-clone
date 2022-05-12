@@ -5,6 +5,7 @@ import {JwtService} from "@nestjs/jwt";
 import {AuthDto} from "./dto/auth.dto";
 import {ModelType} from "@typegoose/typegoose/lib/types";
 import {compare, genSalt, hash} from "bcryptjs";
+import {Types} from "mongoose";
 
 @Injectable()
 export class AuthService {
@@ -17,7 +18,7 @@ export class AuthService {
         const user = await this.validateUser(dto)
         return {
             user: this.returnUserFields(user),
-            accessToken: await this.issueAccessToken(user._id.toString())
+            accessToken: await this.issueAccessToken(user._id)
         }
     }
 
@@ -33,7 +34,7 @@ export class AuthService {
         const user = await newUser.save()
         return {
             user: this.returnUserFields(user),
-            accessToken: await this.issueAccessToken(user._id.toString())
+            accessToken: await this.issueAccessToken(user._id)
         }
     }
 
@@ -47,11 +48,9 @@ export class AuthService {
         return user
     }
 
-    private async issueAccessToken(userId: string) {
+    private async issueAccessToken(userId: Types.ObjectId) {
         const data = {id: userId}
-        return await this.jwtService.signAsync(data, {
-            expiresIn: '24h'
-        })
+        return await this.jwtService.signAsync(data)
     }
 
     private returnUserFields(user: UserModel) {

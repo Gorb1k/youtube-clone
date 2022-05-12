@@ -1,4 +1,4 @@
-import {IsEmail, IsEmpty, IsString, Length, MaxLength, MinLength} from "class-validator";
+import {IsEmail, IsString, Length} from "class-validator";
 
 export class AuthDto {
     @IsEmail({}, {message: 'Invalid Email format'})
