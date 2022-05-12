@@ -11,8 +11,7 @@ import {Types} from "mongoose";
 export class UserService {
     constructor(
         @InjectModel(UserModel) private userModel: ModelType<UserModel>,
-    ) {
-    }
+    ) {}
 
     async getById(_id: Types.ObjectId) {
         const user = await this.userModel.findById(_id, '-password -__v') //второй параметр исключает поля, которые нам не нужны
