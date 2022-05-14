@@ -12,8 +12,9 @@ export class VideoService {
     ) {
     }
 
-    async getById(_id: Types.ObjectId) {
-        const video = await this.videoModel.findOne({_id, isPublished: true}, '-__v') //второй параметр исключает поля, которые нам не нужны
+    async getByVideoId(_id: Types.ObjectId, isPublished:boolean= true){
+        //Check authUserId === video.userId Обязательно!
+        const video = await this.videoModel.findOne(isPublished ? {_id, isPublished:true} : {_id}, '-__v') //второй параметр исключает поля, которые нам не нужны
         if (!video) throw new NotFoundException('Video is not found')
         return video
     }
@@ -48,7 +49,7 @@ export class VideoService {
             .exec()
     }
 
-    async getMostPopularByView() {
+    async getMostPopularByViews() {
         return this.videoModel
             .find({views: {$gt: 0}}, '-__v')
             .sort({views: -1})
@@ -67,14 +68,14 @@ export class VideoService {
         return video._id
     }
 
-    async update(_id: Types.ObjectId, dto: VideoDto) {
+    async update(_id: string, dto: VideoDto) {
         const updatedVideo = await this.videoModel.findByIdAndUpdate(_id, dto, {new: true}).exec()
         if (!updatedVideo) throw new NotFoundException('Video is not found')
 
         return updatedVideo
     }
 
-    async delete(_id: Types.ObjectId) {
+    async delete(_id: string) {
         const deletedVideo = await this.videoModel.findByIdAndDelete(_id).exec()
         if (!deletedVideo) throw new NotFoundException('Video is not found')
 
@@ -88,7 +89,7 @@ export class VideoService {
         return updatedVideo
     }
 
-    async updateLike(_id: Types.ObjectId, type: 'inc' | 'dec') {
+    async updateLikes(_id: Types.ObjectId, type: 'inc' | 'dec') {
         const updatedVideo = await this.videoModel.findByIdAndUpdate(_id, {$inc: {like: type === 'inc' ? 1 : -1}}, {new: true}).exec()
         if (!updatedVideo) throw new NotFoundException('Video is not found')
 

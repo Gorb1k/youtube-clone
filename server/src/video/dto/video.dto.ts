@@ -8,15 +8,19 @@ export class VideoDto {
 
     @IsString()
     readonly name: string
+
     @IsBoolean()
     readonly isPublished?: boolean
+
     @IsString()
     readonly videoPath: string
+
     @IsString()
     readonly description: string
+
     @IsString()
     readonly thumbnailPath: string
-    @IsObjectId()
-    readonly userId: Types.ObjectId
+
+    readonly userId?: Types.ObjectId
 
 }
