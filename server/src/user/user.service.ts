@@ -23,8 +23,6 @@ export class UserService {
         const user = await this.getById(_id)
 
         const isSameUser = await this.userModel.findOne({email: dto.email})
-        console.log('My ID: ', _id)
-        console.log('ID from BD: ', isSameUser._id)
         if (isSameUser && _id.toString() !== isSameUser._id.toString()) throw new NotFoundException('Email is already existed')
 
         if (dto.password) {
@@ -33,13 +31,13 @@ export class UserService {
         }
 
         user.email = dto.email
+        user.name = dto.name
         user.description = dto.description
         user.location = dto.location
-        user.bannerPath = dto.bannerPath
         user.avatarPath = dto.avatarPath
         await user.save()
 
-        return
+        return user
     }
 
     async getMostPopular() {

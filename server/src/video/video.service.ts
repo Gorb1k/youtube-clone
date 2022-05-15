@@ -1,4 +1,4 @@
-import {Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
+import {BadRequestException, Injectable, NotFoundException, UnauthorizedException} from '@nestjs/common';
 import {InjectModel} from "nestjs-typegoose";
 import {ModelType} from "@typegoose/typegoose/lib/types";
 import {Types} from "mongoose";
@@ -28,10 +28,11 @@ export class VideoService {
             options = {
                 ...options,
                 $or: [
-                    {name: new RegExp(searchTerm, 'i')}
+                    {name: new RegExp(searchTerm, 'i')}  //Регулярное выражение для поиска, i значит, что поиск невосприимчив к регистру
                 ]
             }
         }
+
         return this.videoModel
             .find(options, '-__v')
             .sort({createdAt: 'desc'})
@@ -56,9 +57,9 @@ export class VideoService {
             .exec()
     }
 
-    async create(userId: Types.ObjectId) {
+    async create(user: Types.ObjectId) {
         const defaultValue: VideoDto = {
-            userId,
+            user,
             name: '',
             videoPath: '',
             description: '',
@@ -89,7 +90,8 @@ export class VideoService {
         return updatedVideo
     }
 
-    async updateLikes(_id: Types.ObjectId, type: 'inc' | 'dec') {
+    async updateLikes(_id: Types.ObjectId, type?: 'inc' | 'dec') {
+        if (type !== 'inc' && type !== 'dec') throw new BadRequestException('Invalid type (provide inc or dec type)')
         const updatedVideo = await this.videoModel.findByIdAndUpdate(_id, {$inc: {like: type === 'inc' ? 1 : -1}}, {new: true}).exec()
         if (!updatedVideo) throw new NotFoundException('Video is not found')
 

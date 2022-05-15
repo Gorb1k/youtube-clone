@@ -6,7 +6,6 @@ export class UserDto {
     @IsEmail()
     readonly email: string
 
-
     readonly password?: string
 
     @IsString()
@@ -15,11 +14,8 @@ export class UserDto {
     @IsString()
     readonly description: string
 
-    @IsString()
-    readonly location: string
+    @IsString() readonly location: string
 
-    @IsString()
-    readonly bannerPath: string
 
     @IsString()
     readonly avatarPath: string

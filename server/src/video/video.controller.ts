@@ -23,11 +23,6 @@ export class VideoController {
     constructor(private readonly videoService: VideoService) {
     }
 
-    @Get('private/:id')
-    @Auth()
-    async getByVideoIdPrivate(@Param('id', IdValidationPipe) id: Types.ObjectId) {
-        return this.videoService.getByVideoId(id, false)
-    }
 
     @Get('by-user/:userId')
     async getVideoByUserId(@Param('userId', IdValidationPipe) userId: Types.ObjectId) {
@@ -42,6 +37,11 @@ export class VideoController {
     @Get('most-popular')
     async getMostPopularByViews() {
         return this.videoService.getMostPopularByViews()
+    }
+    @Get('private/:id')
+    @Auth()
+    async getByVideoIdPrivate(@Param('id', IdValidationPipe) id: Types.ObjectId) {
+        return this.videoService.getByVideoId(id, false)
     }
 
     @Get()
@@ -82,7 +82,6 @@ export class VideoController {
 
     @HttpCode(200)
     @Put('update-views/:videoId')
-
     async updateViews(@Param('videoId', IdValidationPipe) videoId: Types.ObjectId) {
         return this.videoService.updateViewsCount(videoId)
     }

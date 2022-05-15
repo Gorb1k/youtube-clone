@@ -9,7 +9,6 @@ export class VideoDto {
     @IsString()
     readonly name: string
 
-    @IsBoolean()
     readonly isPublished?: boolean
 
     @IsString()
@@ -21,6 +20,6 @@ export class VideoDto {
     @IsString()
     readonly thumbnailPath: string
 
-    readonly userId?: Types.ObjectId
+    readonly user?: Types.ObjectId
 
 }

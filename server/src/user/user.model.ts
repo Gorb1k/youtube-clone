@@ -27,8 +27,6 @@ export class UserModel extends TimeStamps{
     @prop()
     location:string
 
-    @prop()
-    bannerPath:string
 
     @prop()
     avatarPath:string

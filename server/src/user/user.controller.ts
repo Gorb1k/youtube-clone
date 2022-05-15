@@ -5,13 +5,14 @@ import {
     Put,
     UsePipes,
     ValidationPipe,
-    HttpCode
+    HttpCode, Param
 } from '@nestjs/common';
 import {UserService} from './user.service';
 import {UserDto} from "./dto/user.dto";
 import {Auth} from "../auth/decorators/auth.decorator";
 import {CurrentUser} from "./decorators/user.decorator";
 import {Types} from "mongoose";
+import {IdValidationPipe} from "../pipes/id.validation.pipe";
 
 
 @Controller('user')
@@ -32,6 +33,15 @@ export class UserController {
     @Put('profile')
     @Auth()
     async updateProfile(@CurrentUser('_id') _id: Types.ObjectId, @Body() dto: UserDto) {
+        return this.userService.updateProfile(_id, dto);
+    }
+
+    //TODO: for ADMIN ONLY!
+    @UsePipes(new ValidationPipe())
+    @HttpCode(200)
+    @Put('adm-upd-profile/:_id')
+    @Auth()
+    async updateUser(@Param('_id', IdValidationPipe) _id: Types.ObjectId, @Body() dto: UserDto) {
         return this.userService.updateProfile(_id, dto);
     }
 
