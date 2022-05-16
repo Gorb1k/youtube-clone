@@ -4,6 +4,7 @@ import {FC} from "react";
 import {useQuery} from "react-query";
 import {UserService} from "../../../../services/user/user.service";
 import Loader from "../../../ui/Loader";
+import {nFormatter} from "../../../../utils/numberFormatter";
 
 interface Props {
 
@@ -16,7 +17,6 @@ const ProfileInfo: FC<Props> = () => {
         () => UserService.getProfile(),
         {select: ({data}) => data}
     )
-    console.log(data)
     return isLoading
         ? <Loader
             count={5} //колво строк
@@ -33,7 +33,7 @@ const ProfileInfo: FC<Props> = () => {
                 <div className="bottom">videos</div>
             </div>
             <div className="item">
-                <div className="top">{data?.subscribersCount}</div>
+                <div className="top">{nFormatter(data?.subscribersCount || 0)}</div>
                 <div className="bottom">subscribers</div>
             </div>
         </div>
