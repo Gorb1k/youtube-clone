@@ -12,5 +12,5 @@ export const UserService = {
     },
     async updateProfile(body:IProfileUpdate) {
         return axiosWithAuth.put<IUser[]>('/user/profile', body)
-    },
+    }
 }

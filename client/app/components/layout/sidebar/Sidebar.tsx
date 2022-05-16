@@ -7,6 +7,7 @@ import Link from "next/link";
 import {useAuth} from "../../../hooks/useAuth";
 import Line from "../../ui/Line";
 import ProfileInfo from "./profile-info/ProfileInfo";
+import Menu from "./menu/Menu";
 
 
 const Sidebar: FC = () => {
@@ -24,7 +25,7 @@ const Sidebar: FC = () => {
 
             <ProfileInfo/>
             <Line/>
-
+            <Menu/>
 
             {/*<div className="switch_wrapper">*/}
             {/*    <label className="switch">*/}
