@@ -18,6 +18,26 @@ export class UserService {
         if (!user) throw new UnauthorizedException('User is not found')
         return user
     }
+    async getUserWithCount(_id: Types.ObjectId) {
+
+        return this.userModel.aggregate()
+            .match({_id}) // для возврата только пользователя с нужным ID
+            .lookup({
+            from: 'Video', //из кокой коллекции берем (Таблица Video связана с таблицей User через поле user)
+            foreignField: 'user', // это название поля в таблице Video (foreignKey)
+            localField: '_id', // название поля в таблице User (primaryKey)
+            as: 'videos' // это название поля, куда мы выводим полученные данные
+        }).addFields({
+            videosCount: {
+                $size: '$videos' //выводит колличество полученных эементов
+            }
+        }).project({
+            __v:0,
+            password:0, //убираем ненужные поля
+            videos:0
+        }).exec() //выполняем запрос к БД чтобы return вернул обработанный ответ от БД
+            .then((data) => data[0]) // забираем из массива нужный элемент
+    }
 
     async updateProfile(_id: Types.ObjectId, dto: UserDto) {
         const user = await this.getById(_id)

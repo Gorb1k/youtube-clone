@@ -25,7 +25,7 @@ export class UserController {
     @Get('profile')
     @Auth()
     async getProfile(@CurrentUser('_id') _id: Types.ObjectId) {
-        return this.userService.getById(_id)
+        return this.userService.getUserWithCount(_id)
     }
 
     @UsePipes(new ValidationPipe())

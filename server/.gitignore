@@ -21,6 +21,7 @@ lerna-debug.log*
 # enviroment
 .env
 todo.txt
+uploads
 # IDEs and editors
 /.idea
 .project

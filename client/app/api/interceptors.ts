@@ -13,7 +13,7 @@ export const axiosClassic = axios.create({
 
 const instance = axios.create({
     //for deploy - baseURL:IS_PRODUCTION ? API_SERVER_URL : API_URL
-    baseURL: process.env.API_SERVER_URL,
+    baseURL: `${process.env.APP_URL}/api`,
     headers: getContentType()
 })
 instance.interceptors.request.use(config => {
@@ -27,3 +27,5 @@ instance.interceptors.request.use(config => {
 // instance.interceptors.response.use(config => {
 //
 // })
+
+export default instance
