@@ -5,7 +5,7 @@ import Layout from "../../layout/Layout";
 import {useAuth} from "../../../hooks/useAuth";
 import {IHome} from "./home.interface";
 
-const Home: FC<IHome> = ({weeklyVideos}) => {
+const Home: FC<IHome> = ({weeklyVideos, randomVideo}) => {
 
     const auth = useAuth()
 
@@ -13,7 +13,7 @@ const Home: FC<IHome> = ({weeklyVideos}) => {
     return (
         <Layout title='New Youtube - Best video'>
             <div id="wrapper_content">
-                <LeftSide/>
+                <LeftSide weeklyVideos={weeklyVideos} randomVideo={randomVideo}/>
                 <RightSide/>
             </div>
         </Layout>

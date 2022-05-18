@@ -1,8 +1,13 @@
 import {FC} from "react";
 import Slider from "./Slider";
+import {IVideo} from "../../../../types/video.interface";
 
+interface IWF {
+    weeklyVideos: IVideo[]
+    randomVideo: IVideo
+}
 
-const WeeklyFeatured:FC = () => {
+const WeeklyFeatured:FC<IWF> = ({weeklyVideos, randomVideo}) => {
     return (
         <div className="weekly_featured">
             <div className="info_wf">
@@ -13,7 +18,7 @@ const WeeklyFeatured:FC = () => {
                     ullam vel non, quisquam totam, doloremque expedita odit consectetur minima vitae.
                     Facilis nostrum cumque illum fugit rem, nam consectetur!
                 </div>
-                <Slider/>
+                <Slider videos={weeklyVideos}/>
             </div>
 
             <div className="top_video">
@@ -37,7 +42,7 @@ const WeeklyFeatured:FC = () => {
                         <div className="likes">LIKES 1.6K</div>
                         <div className="date">3DS AGO</div>
                     </div>
-                </div>
+                </div>;
             </div>
 
         </div>

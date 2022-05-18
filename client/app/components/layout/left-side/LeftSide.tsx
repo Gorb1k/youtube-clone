@@ -2,12 +2,17 @@ import {FC} from "react";
 import WeeklyFeatured from "./WeaklyFeatured/WeeklyFeatured";
 import Line from "../../ui/Line";
 import Recommended from "./Recommended/Recommended";
+import {IVideo} from "../../../types/video.interface";
 
+interface ILeftSide {
+    weeklyVideos: IVideo[]
+    randomVideo: IVideo
+}
 
-const LeftSide:FC = () => {
+const LeftSide:FC<ILeftSide> = ({randomVideo,weeklyVideos}) => {
     return (
         <div className="left_side">
-            <WeeklyFeatured/>
+            <WeeklyFeatured weeklyVideos={weeklyVideos} randomVideo={randomVideo}/>
 
             <Line/>
 
