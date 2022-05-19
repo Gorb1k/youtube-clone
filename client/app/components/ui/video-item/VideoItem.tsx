@@ -9,25 +9,42 @@ dayjs.extend(relativeTime) // Расширение функционала биб
 import VideoDuration from "../VideoDuration";
 import styles from './VideoItem.module.scss'
 import Link from "next/link";
+import {IVideoItem} from "./video-item.interface";
 
-const VideoItem: FC<{ item: IVideo }> = ({item}) => {
 
+const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar}) => {
+
+    isLarge && console.log(item)
+    const avatar = item.user?.avatarPath || ''
 
     return (
-        <Link href={`/v/${item._id}`}>
-                <a className={styles.video_item}>
+        <div className={styles.video_item}>
+            <Link href={`/v/${item._id}`}>
+                <a>
                     <div className={styles.thumbnail}>
-                        <Image src={item.thumbnailPath} alt={item.name} width={200} height={110}/>
+                        <Image src={item.thumbnailPath} alt={item.name} width={200} height={110} layout={"responsive"}/>
                         <VideoDuration videoPath={item.videoPath}/>
+                        {isAvatar && (
+                            <div className={styles.avatar}>
+                                <Image src={avatar} width={36} height={36} alt={item.user?.name}/>
+                            </div>
+                        )}
                     </div>
                     <div className={styles.author}>{item.user?.name}</div>
                     <div className={styles.name}>{item.name}</div>
-                    <div className={styles.number_info}>
-                        <div className={styles.views}>VIEWS {nFormatter(item.views)}</div>
-                        <div className={styles.date}>{dayjs(new Date(item.createdAt)).fromNow()}</div>
-                    </div>
                 </a>
-        </Link>
+            </Link>
+            {isLarge && (
+                <div className={styles.description}>
+                    {item.description}
+                </div>
+            )}
+            <div className={styles.number_info}>
+                <div className={styles.views}>VIEWS {nFormatter(item.views)}</div>
+                {isLarge && <div className={styles.likes}>LIKES {nFormatter(item.like)}</div>}
+                <div className={styles.date}>{dayjs(new Date(item.createdAt)).fromNow()}</div>
+            </div>
+        </div>
     )
 }
 

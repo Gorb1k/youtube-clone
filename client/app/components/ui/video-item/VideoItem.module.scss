@@ -2,47 +2,43 @@
 
 .video_item {
   @apply block;
-  > .thumbnail {
-    @apply relative;
+  > a {
+    >.thumbnail {
+      @apply relative;
 
-    > .hot {
-      @apply absolute rounded-sm text-white flex items-center justify-center w-12 h-5 left-2 top-2;
-      font-size: 12px;
-      background-color: rgba(229, 27, 23, .76);
-    }
-
-    > time {
-      @apply absolute rounded-sm text-white flex items-center justify-center w-16 h-6 left-2 bottom-2.5;
-      font-size: 12px;
-      background-color: rgba(0, 0, 0, .5);
-    }
-
-    > .avatar {
-      @apply bg-white p-1 rounded-full absolute;
-      right: 10px;
-      bottom: -18px;
-
-      > span {
-        @apply rounded-full;
+      > .hot {
+        @apply absolute rounded-sm text-white flex items-center justify-center w-12 h-5 left-2 top-2;
+        font-size: 12px;
+        background-color: rgba(229, 27, 23, .76);
       }
 
-      > img {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
+      > time {
+        @apply absolute rounded-sm text-white flex items-center justify-center w-16 h-6 left-1.5 bottom-1.5;
+        font-size: 12px;
+        background-color: rgba(0, 0, 0, .5);
+      }
+
+      > .avatar {
+        @apply bg-white p-1 rounded-full absolute;
+        right: 10px;
+        bottom: -18px;
+
+        > span {
+          @apply rounded-full;
+        }
       }
     }
-  }
 
-  > .author {
-    @apply mt-1;
-    color: $gray;
+    > .author {
+      @apply mt-1;
+      color: $gray;
 
-  }
+    }
 
-  > .name {
-    @apply font-medium mt-1 mb-2 text-sm truncate;
+    > .name {
+      @apply font-medium mt-1 mb-2 text-sm truncate;
 
+    }
   }
 
   > .description {

@@ -7,7 +7,7 @@ export interface IVideo {
     description: string
     thumbnailPath:string
     views:number
-    likes:number
+    like:number
     user?:IUser
     isPublished?:boolean
     createdAt:string

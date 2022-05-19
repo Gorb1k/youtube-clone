@@ -5,7 +5,7 @@ import Layout from "../../layout/Layout";
 import {useAuth} from "../../../hooks/useAuth";
 import {IHome} from "./home.interface";
 
-const Home: FC<IHome> = ({weeklyVideos, randomVideo}) => {
+const Home: FC<IHome> = ({weeklyVideos, randomVideo, newVideos}) => {
 
     const auth = useAuth()
 
