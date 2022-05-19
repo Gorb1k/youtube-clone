@@ -19,7 +19,7 @@ export const getStaticProps:GetStaticProps = async () => { //в пропсы п�
         return {
             props: {
                 newVideos,
-                weeklyVideos: newVideos.sort(() => Math.random() - 0.5),
+                weeklyVideos: newVideos.sort(() => Math.random() - 0.5).slice(0, 5),
                 randomVideo,
                 topVideo,
                 topChannels
