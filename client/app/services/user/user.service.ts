@@ -8,7 +8,7 @@ export const UserService = {
         return axiosWithAuth.get<IUser>('/user/profile')
     },
     async getMostPopular() {
-        return axiosClassic.get<IUser[]>('/user/most-popular')
+        return axiosClassic.get<IUser[]>('/user/pop-profiles')
     },
     async updateProfile(body:IProfileUpdate) {
         return axiosWithAuth.put<IUser[]>('/user/profile', body)

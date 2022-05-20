@@ -83,7 +83,6 @@ img {
 
   .sidebar {
     width: 15%;
-
     background-color: #F8F8F8;
 
     > .logo {
@@ -307,10 +306,6 @@ img {
     #recommended {
       padding: 0 $gutter40;
       > .top_block {
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -322,23 +317,21 @@ img {
       }
 
       > .catalog {
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
+
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        gap: 20px;
 
-        > .video_item {
+        > div {
+          flex: 1 1 calc((100%/4) - 1rem);
           width: 23%;
-          margin-bottom: 25px;
+          margin-bottom: 10px;
         }
-
-        > .video_big_item {
-          width: 46%;
-          position: relative;
-        }
+        // Этот блок делает один из маленьких элементов большим
+        //> .video_big_item {
+        //  width: 46%;
+        //  position: relative;
+        //}
       }
     }
   }
@@ -361,12 +354,12 @@ img {
 
     #top_channels {
       .title_gray {
-        margin-bottom: 15px;
+        margin-bottom: 20px;
       }
 
       .list_channels {
         > .channel {
-          margin-bottom: 15px;
+          margin-bottom: 25px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -375,11 +368,14 @@ img {
             display: flex;
             align-items: center;
 
-            > img {
+            > a {
+              display: flex;
+              justify-content: center;
+              align-items: center;
               margin-right: 15px;
-              width: 70px;
-              height: 70px;
-              border-radius: 50%;
+              > span {
+                border-radius: 50%;
+              }
             }
 
             > .info {
@@ -388,7 +384,7 @@ img {
                 font-weight: 600;
                 font-size: 1.2rem;
 
-                &::after {
+                &.verified::after {
                   content: '';
                   width: 15px;
                   height: 15px;

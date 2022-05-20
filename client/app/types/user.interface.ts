@@ -7,6 +7,7 @@ export interface IUser {
     avatarPath:string
     subscribersCount:number
     videosCount?:number
+    isVerified?:boolean
     createdAt:string
     updatedAt:string
 }

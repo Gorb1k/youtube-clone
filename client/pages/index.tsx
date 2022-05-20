@@ -2,6 +2,7 @@ import type {GetStaticProps, NextPage} from 'next'
 import Home from "../app/components/pages/home/Home";
 import {VideoService} from "../app/services/video/video.service";
 import {IHome} from "../app/components/pages/home/home.interface";
+import {UserService} from "../app/services/user/user.service";
 
 const HomePage: NextPage<IHome> = (props) => {
     return <Home {...props}/>
@@ -11,8 +12,8 @@ export const getStaticProps:GetStaticProps = async () => { //в пропсы п�
     try {
             const {data: newVideos } = await VideoService.getAll()
             const randomVideo = {}
-            const topVideo = {}
-            const topChannels:any = []
+            const topVideo = await VideoService.getMostPopular().then(({data}) => data[0])
+            const topChannels:any = await UserService.getMostPopular().then((data) => data.data)
         //weekly featured & new video & random videos
         //top video
         //top channels
@@ -27,10 +28,10 @@ export const getStaticProps:GetStaticProps = async () => { //в пропсы п�
             revalidate:60
         }
 
-    }catch (e) {
+    }catch (e:any) {
         return {
             props: {
-                newVideos: [],
+                newVideos: [{error: e.message}],
                 weeklyVideos: [],
                 randomVideo: {},
                 topVideo: {},

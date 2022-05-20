@@ -12,9 +12,8 @@ import Link from "next/link";
 import {IVideoItem} from "./video-item.interface";
 
 
-const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar}) => {
+const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar, tag}) => {
 
-    isLarge && console.log(item)
     const avatar = item.user?.avatarPath || ''
 
     return (
@@ -24,6 +23,7 @@ const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar}) => {
                     <div className={styles.thumbnail}>
                         <Image src={item.thumbnailPath} alt={item.name} width={200} height={110} layout={"responsive"}/>
                         <VideoDuration videoPath={item.videoPath}/>
+                        {tag && <div className={styles.hot}>{tag}</div>}
                         {isAvatar && (
                             <div className={styles.avatar}>
                                 <Image src={avatar} width={50} height={50} alt={item.user?.name}/>
