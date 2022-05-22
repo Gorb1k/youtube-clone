@@ -1,3 +1,6 @@
+const plugin = require('tailwindcss/plugin')
+const {shadow} = require("tailwindcss/lib/util/dataTypes");
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -30,5 +33,16 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+      plugin(({addComponents}) => {
+        addComponents({
+          '.shadow-block': {
+            display: 'block',
+            boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+            animation: 'scaleIn .35s ease-in-out',
+            backgroundColor: 'white'
+          }
+        })
+      })
+  ],
 }

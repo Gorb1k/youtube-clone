@@ -28,7 +28,7 @@
     }
 
     > .author {
-      @apply mt-2 font-normal text-base;
+      @apply mt-2 font-normal text-base truncate;
       color: $gray;
     }
 
@@ -46,7 +46,7 @@
     @apply flex items-center justify-between;
 
     > div {
-      @apply uppercase font-semibold;
+      @apply uppercase font-semibold truncate;
       color: $gray;
     }
   }

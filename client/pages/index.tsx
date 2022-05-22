@@ -9,6 +9,7 @@ const HomePage: NextPage<IHome> = (props) => {
 }
 
 export const getStaticProps:GetStaticProps = async () => { //в пропсы получаем нужную дату для для наполнения страницы на сервере
+
     try {
             const {data: newVideos } = await VideoService.getAll()
             const randomVideo = {}

@@ -10,9 +10,11 @@ import VideoDuration from "../VideoDuration";
 import styles from './VideoItem.module.scss'
 import Link from "next/link";
 import {IVideoItem} from "./video-item.interface";
+import cn from "classnames";
 
 
 const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar, tag}) => {
+
 
     const avatar = item.user?.avatarPath || ''
 
@@ -30,7 +32,7 @@ const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar, tag}) => {
                             </div>
                         )}
                     </div>
-                    <div className={styles.author}>{item.user?.name}</div>
+                    <div className={cn(styles.author, {verified: item.user?.isVerified})}>{item.user?.name}</div>
                     <div className={styles.name}>{item.name}</div>
                 </a>
             </Link>

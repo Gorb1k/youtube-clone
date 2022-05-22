@@ -6,6 +6,7 @@ import Link from "next/link";
 import cn from "classnames"
 
 const ChannelItem:FC<{item: IUser}> = ({item}) => {
+
     return (
         <div className="channel">
             <div className="info_left">
@@ -15,7 +16,9 @@ const ChannelItem:FC<{item: IUser}> = ({item}) => {
                     </a>
                 </Link>
                 <div className="info">
-                    <div className={cn("name", {verified: item.isVerified})}>{item.name}</div>
+                    <div className={cn("name", {verified: item.isVerified})}>
+                        {item.name}
+                    </div>
                     <div className="subs">{nFormatter(item.subscribersCount)} Subscribers</div>
                 </div>
             </div>

@@ -9,6 +9,8 @@ interface IWF {
 }
 
 const WeeklyFeatured:FC<IWF> = ({weeklyVideos, randomVideo}) => {
+
+
     return (
         <div className="weekly_featured">
             <div className="info_wf">

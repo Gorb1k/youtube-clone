@@ -6,7 +6,6 @@ import VideoItem from "../../../ui/video-item/VideoItem";
 
 const MostPopularVideo:FC<{video: IVideo}> = ({video}) => {
 
-    console.log(video)
 
     return (
         <div id="live">

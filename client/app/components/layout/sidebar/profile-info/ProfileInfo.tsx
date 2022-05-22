@@ -5,6 +5,7 @@ import {UserService} from "../../../../services/user/user.service";
 import Loader from "../../../ui/Loader";
 import {nFormatter} from "../../../../utils/numberFormatter";
 import styles from './ProfileInfo.module.scss'
+import cn from "classnames";
 interface Props {
 
 }
@@ -23,7 +24,7 @@ const ProfileInfo: FC<Props> = () => {
         : <>
         <div className={styles.profile_info}>
             <Image src={data?.avatarPath || ''} alt="" width={120} height={120} quality={90}/>
-            <div className={styles.name}>{data?.name}</div>
+            <div className={cn(styles.name, {verified: data?.isVerified})}>{data?.name}</div>
             <div className={styles.location}>{data?.location}</div>
         </div>
         <div className={styles.information}>

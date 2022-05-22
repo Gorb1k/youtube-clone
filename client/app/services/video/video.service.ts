@@ -14,8 +14,8 @@ export const VideoService = {
     async getByVideoIdPrivate(videoId:string) {
         return axiosWithAuth.get<IVideo>(`/video/private/${videoId}`)
     },
-    async getAll() {
-        return axiosClassic.get<IVideo[]>(`/video`)
+    async getAll(searchTerm?:string) {
+        return axiosClassic.get<IVideo[]>(`/video`, {params: searchTerm ? {searchTerm} : {}})
     },
     async getMostPopular() {
         return axiosClassic.get<IVideo[]>('/video/most-popular')

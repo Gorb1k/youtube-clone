@@ -36,7 +36,7 @@ export class VideoService {
         return this.videoModel
             .find(options, '-__v')
             .sort({createdAt: 'desc'})
-            .populate('user', 'name avatarPath') //нужно для получения не просто ID юзера, но и полей, которые нам нужны
+            .populate('user', 'name avatarPath isVerified') //нужно для получения не просто ID юзера, но и полей, которые нам нужны
             .exec()
     }
 
@@ -55,7 +55,7 @@ export class VideoService {
         return this.videoModel
             .find({views: {$gt: 0}}, '-__v')
             .sort({views: -1})
-            .populate('user', 'name avatarPath')
+            .populate('user', 'name avatarPath isVerified')
             .exec()
     }
 

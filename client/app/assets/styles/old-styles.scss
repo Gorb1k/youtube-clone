@@ -189,99 +189,62 @@ img {
       padding: 15px 25px;
       position: relative;
       border-bottom: 1px solid $light_gray;
-
-      .search_top {
-        max-width: 400px;
-        margin: 0 auto;
-
-        > label {
-          position: relative;
-          display: block;
-
-          input {
-            border-radius: 30px;
-            padding: 8px 15px;
-            border: 1px solid $light_gray;
-            width: 100%;
-            display: block;
-            transition: box-shadow .4s ease;
-
-            &::placeholder {
-              color: $gray;
-              opacity: .8;
-              font-style: italic;
-            }
-
-            &:focus {
-              box-shadow: 0 3px 6px rgba(0, 0, 0, .04);
-            }
-          }
-
-          img {
-            position: absolute;
-            right: 15px;
-            top: 8px;
-            max-width: 20px;
-          }
-        }
-      }
     }
+  }
 
-    #wrapper_content {
-      display: -webkit-flex;
-      display: -moz-flex;
-      display: -ms-flex;
-      display: -o-flex;
-      display: flex;
-      flex-wrap: wrap;
+  #wrapper_content {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-wrap: wrap;
 
-      > .left_side {
-        padding: $gutter40 0;
-        width: 75%;
-        border-right: 1px solid $light_gray;
+    > .left_side {
+      padding: $gutter40 0;
+      width: 75%;
+      border-right: 1px solid $light_gray;
 
-        > .line {
-          height: 1px;
-          background-color: $light_gray;
-          width: 100%;
-          margin: 25px 0;
+      > .line {
+        height: 1px;
+        background-color: $light_gray;
+        width: 100%;
+        margin: 25px 0;
+      }
+
+      > .weekly_featured {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 $gutter40;
+
+        > .info_wf {
+          width: 50%;
+          padding-right: 15px;
+
+          > .sub_name {
+            font-size: 18px;
+          }
+
+          > h1 {
+            font-size: 24px;
+            margin: 20px 0;
+            font-weight: 600;
+          }
+
+          > .description {
+            color: $gray;
+            margin-bottom: 20px;
+          }
         }
 
-        > .weekly_featured {
-          display: flex;
-          flex-wrap: wrap;
-          padding: 0 $gutter40;
-
-          > .info_wf {
-            width: 50%;
-            padding-right: 15px;
-
-            > .sub_name {
-              font-size: 18px;
-            }
-
-            > h1 {
-              font-size: 24px;
-              margin: 20px 0;
-              font-weight: 600;
-            }
-
-            > .description {
-              color: $gray;
-              margin-bottom: 20px;
-            }
-          }
-
-          > .top_video {
-            width: 50%;
-            padding-left: 15px;
-          }
+        > .top_video {
+          width: 50%;
+          padding-left: 15px;
         }
       }
     }
   }
 }
-
 .title_gray {
   display: -webkit-flex;
   display: -moz-flex;
@@ -305,6 +268,7 @@ img {
   > .left_side {
     #recommended {
       padding: 0 $gutter40;
+
       > .top_block {
         display: flex;
         align-items: center;
@@ -323,10 +287,11 @@ img {
         gap: 20px;
 
         > div {
-          flex: 1 1 calc((100%/4) - 1rem);
+          flex: 1 1 calc((100% / 4) - 1rem);
           width: 23%;
           margin-bottom: 10px;
         }
+
         // Этот блок делает один из маленьких элементов большим
         //> .video_big_item {
         //  width: 46%;
@@ -367,35 +332,27 @@ img {
           .info_left {
             display: flex;
             align-items: center;
-
             > a {
+              flex-shrink: 0;
               display: flex;
               justify-content: center;
               align-items: center;
               margin-right: 15px;
+
               > span {
                 border-radius: 50%;
               }
             }
 
             > .info {
+              overflow: hidden;
               > .name {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
                 position: relative;
                 font-weight: 600;
                 font-size: 1.2rem;
-
-                &.verified::after {
-                  content: '';
-                  width: 15px;
-                  height: 15px;
-                  background-image: url('../../../public/img/common/correct.svg');
-                  background-position: center;
-                  background-repeat: no-repeat;
-                  margin-left: 10px;
-                  display: inline-block;
-                  background-size: cover;
-                  opacity: 0.8;
-                }
               }
 
               > .subs {
@@ -416,4 +373,17 @@ img {
       }
     }
   }
+}
+
+.verified::after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background-image: url('../../../public/img/common/correct.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+  display: inline-block;
+  background-size: cover;
+  opacity: 0.8;
 }

@@ -7,7 +7,6 @@ import {IVideo} from "../../../../types/video.interface";
 
 const Slider: FC<{ videos: IVideo[] }> = ({videos}) => {
 
-
     return (
         <Swiper
             modules={[Autoplay]}
@@ -24,7 +23,6 @@ const Slider: FC<{ videos: IVideo[] }> = ({videos}) => {
                 <SwiperSlide key={video._id}>
                     <VideoItem item={video}/>
                 </SwiperSlide>)}
-
         </Swiper>
 
 
