@@ -4,6 +4,7 @@ import {BsPlusCircleFill} from "react-icons/bs";
 import styles from './IconsRight.module.scss'
 import AuthForm from "../auth-form/AuthForm";
 import {useAuth} from "../../../../hooks/useAuth";
+import VideoUpload from "../upload-video/VideoUpload";
 
 const IconsRight: FC = () => {
 
@@ -11,12 +12,7 @@ const IconsRight: FC = () => {
 
     return (
         <div className={styles.icons}>
-            {!!user &&
-                <button className={styles.button}>
-                    <BsPlusCircleFill fill="#cd3a42"/>
-                </button>
-            }
-            {!user && <AuthForm/>}
+            {!!user?  <VideoUpload/> : <AuthForm/>}
         </div>
     );
 };

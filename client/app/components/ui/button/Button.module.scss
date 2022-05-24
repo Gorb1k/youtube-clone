@@ -1,5 +1,5 @@
 .button {
-  @apply py-1 px-5 text-white
+  @apply py-1.5 px-7 text-white
   bg-primary bg-opacity-80
-  transition-colors duration-300 hover:bg-opacity-100;
+  transition-colors duration-300 hover:bg-opacity-100 text-base;
 }
