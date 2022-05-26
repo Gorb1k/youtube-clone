@@ -11,7 +11,7 @@
       @apply flex min-h-full items-center justify-center;
 
       .window {
-        @apply mx-auto max-w-sm shadow-block p-4;
+        @apply mx-auto max-w-sm shadow-block p-6 relative;
         min-width: 1000px;
         height: 600px;
 

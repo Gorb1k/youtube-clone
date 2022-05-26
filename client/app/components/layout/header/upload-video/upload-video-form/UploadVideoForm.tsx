@@ -6,6 +6,7 @@ import {validEmail} from "../../auth-form/auth-form.constant";
 import Button from "../../../../ui/button/Button";
 import TextArea from "../../../../ui/text-area/TextArea";
 import ToggleIsPublished from "./toggle-isPublished/ToggleIsPublished";
+import FooterForm from "./footer-form/FooterForm";
 
 
 const UploadVideoForm: FC = () => {
@@ -40,9 +41,7 @@ const UploadVideoForm: FC = () => {
                                 isEnabled={!!value}/>}
             />
 
-            <div className={'mt-6 mb-1 text-center'}>
-                <Button className={'mt-2 mx-auto block'}>Upload</Button>
-            </div>
+            <FooterForm/>
         </form>
     );
 };
