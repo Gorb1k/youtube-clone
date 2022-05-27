@@ -5,7 +5,9 @@ import Link from "next/link";
 const RightInfo:FC = () => {
     return (
         <div className={styles.right}>
-            <div className={styles.thumbnail}></div>
+            <div className={styles.thumbnail}>
+                Uploading video...
+            </div>
             <div className={styles.details}>
                 <div>
                     <span>Video link</span>

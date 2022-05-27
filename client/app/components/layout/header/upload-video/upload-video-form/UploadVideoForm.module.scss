@@ -1,9 +1,31 @@
 .form {
-  display: flex;
+  @apply flex pt-8;
   .left{
-    @apply w-8/12;
+    @apply w-7/12 pr-6;
   }
   .right {
-    @apply w-4/12;
+    @apply w-5/12 p-2 pl-10;
+    .thumbnail {
+      @apply bg-gray-200 text-gray-600 text-lg flex items-center justify-center;
+      min-height: 200px;
+    }
+    .details{
+      @apply bg-gray-50 p-3;
+      > div{
+        @apply mb-3 last:mb-0;
+        >span{
+          @apply  block font-normal text-base;
+          &:first-child{
+            @apply text-gray-400 mb-1;
+          }
+          &:last-child {
+
+            >a {
+              @apply text-primary opacity-80
+            }
+          }
+        }
+      }
+    }
   }
 }
