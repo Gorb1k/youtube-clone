@@ -1,0 +1,9 @@
+.form {
+  display: flex;
+  .left{
+    @apply w-8/12;
+  }
+  .right {
+    @apply w-4/12;
+  }
+}

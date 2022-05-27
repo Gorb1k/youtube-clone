@@ -6,11 +6,11 @@ import cn from "classnames";
 
 const FooterForm:FC = () => {
 
-    const isUploaded = true
+    const isUploaded = false
 
     return (
         <div className={styles.footer}>
-            <div className={cn({
+            <div className={cn(styles.status, {
                 [styles['icons-uploaded']]: isUploaded
             })}>
                 <MdUpload className={styles['upload-icon']}/>
