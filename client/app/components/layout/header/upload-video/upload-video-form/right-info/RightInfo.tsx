@@ -1,17 +1,22 @@
 import React, {FC} from 'react';
 import styles from "../UploadVideoForm.module.scss";
 import Link from "next/link";
+import Image from "next/image";
 
 interface IRightVideo {
-    thumbnailPath?:string
-    videoId:string
-    fileName:string
+    thumbnailPath?: string
+    videoId: string
+    fileName: string
+    isLoaded: boolean
 }
 
-const RightInfo:FC<IRightVideo> = ({thumbnailPath, videoId, fileName}) => {
+const RightInfo: FC<IRightVideo> = ({isLoaded, thumbnailPath, videoId, fileName}) => {
     return (
         <div className={styles.right}>
-            {!thumbnailPath && <div className={styles.thumbnail}>Uploading video...</div>}
+            {!thumbnailPath
+                ? <div className={styles.thumbnail}>Uploading video...</div>
+                : <Image src={thumbnailPath} width={344} height={200}/>
+            }
             <div className={styles.details}>
                 <div>
                     <span>Video link</span>

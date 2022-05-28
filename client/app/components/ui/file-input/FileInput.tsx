@@ -5,9 +5,11 @@ import {useUploadFile} from "../../../hooks/useUploadFile";
 
 
 
-const FileInput:FC<IFileUploadInput> = ({title,onChange, folder}) => {
+const FileInput:FC<IFileUploadInput> = ({title,onChange, folder, setValue}) => {
 
-    const {uploadFile} = useUploadFile(onChange, folder)
+
+
+    const {uploadFile} = useUploadFile(onChange, folder, setValue)
 
     return (
         <div className={styles.wrapper}>

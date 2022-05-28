@@ -22,13 +22,21 @@ const UploadVideoForm: FC<{videoId:string}> = ({videoId}) => {
     }
 
     const videoPath = watch('videoPath')
-    const [videoFileName, setVideoFileName] = useState('')
+    const [videoFileName, setVideoFileName] = useState<string>('')
+    const [loadingProgress, setLoadingProgress] = useState<number>(0)
+    const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
     const handleUploadVideo = (value:IMediaResponse) => {
         setValue('videoPath', value.url)
         setValue('name', value.name)
         setVideoFileName(value.name)
     }
+
+    const setProgressPercentage = (value:number) => {
+        setLoadingProgress(value)
+        if(value === 100) setIsLoaded(true)
+    }
+
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 
@@ -58,8 +66,8 @@ const UploadVideoForm: FC<{videoId:string}> = ({videoId}) => {
                                     isEnabled={!!value}/>}
                         />
                     </div>
-                    <RightInfo videoId={videoId} fileName={videoFileName}/>
-                    <FooterForm/>
+                    <RightInfo isLoaded={isLoaded} videoId={videoId} fileName={videoFileName}/>
+                    <FooterForm percent={loadingProgress} isLoaded={isLoaded}/>
                 </>
                 : <Controller
                     control={control}
@@ -67,7 +75,9 @@ const UploadVideoForm: FC<{videoId:string}> = ({videoId}) => {
                     render={() =>
                         <FileInput title={' Upload video first, please.'}
                                    onChange={handleUploadVideo}
-                                   folder={'videos'}/>
+                                   folder={'videos'}
+                                   setValue={setProgressPercentage}
+                        />
                     }
                 />
 

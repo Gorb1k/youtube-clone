@@ -4,19 +4,23 @@ import styles from './FooterForm.module.scss'
 import {MdCheckCircle, MdUpload} from "react-icons/md";
 import cn from "classnames";
 
-const FooterForm:FC = () => {
+interface FooterForm {
+    percent:number
+    isLoaded:boolean
+}
 
-    const isUploaded = false
+const FooterForm:FC<FooterForm> = ({percent, isLoaded}) => {
+
 
     return (
         <div className={styles.footer}>
             <div className={cn(styles.status, {
-                [styles['icons-uploaded']]: isUploaded
+                [styles['icons-uploaded']]: isLoaded
             })}>
                 <MdUpload className={styles['upload-icon']}/>
                 <MdCheckCircle className={styles['check-icon']}/>
                 <span>
-                    {isUploaded ? 'Video is uploaded' : 'Uploading 48%...'}
+                    {isLoaded ? 'Video is uploaded' : `Uploading ${percent}%...`}
                 </span>
             </div>
             <div>

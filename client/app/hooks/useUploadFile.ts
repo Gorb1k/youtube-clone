@@ -6,9 +6,10 @@ import {ChangeEvent} from "react";
 
 export const useUploadFile = (
     onChange: (...event: any) => void,
-    folder?: string) => {
+    folder?: string,
+    setValue?: (value: number) => void) => {
     const {mutateAsync} = useMutation('upload file',
-        (data: FormData) => MediaService.upload(data, folder), {
+        (data: FormData) => MediaService.upload(data, folder, setValue), {
             onSuccess: ({data}) => {
                 onChange(data)
             },
@@ -17,7 +18,7 @@ export const useUploadFile = (
             }
         })
     //TODO: Обернуть в useCallback
-    const uploadFile = async (e:ChangeEvent<HTMLInputElement>) => {
+    const uploadFile = async (e: ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files
         if (!files?.length) return
         const formData = new FormData()

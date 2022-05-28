@@ -1,15 +1,23 @@
-import {FC, Fragment} from 'react';
+import {FC, Fragment, useRef} from 'react';
 import {Dialog, Transition} from '@headlessui/react'
 import {IUploadModal} from "./upload-video.interface";
 import styles from './VideoUpload.module.scss'
 import UploadVideoForm from "./upload-video-form/UploadVideoForm";
+import {useMutation} from "react-query";
+import {VideoService} from "../../../../services/video/video.service";
 
 
 const UploadModal: FC<IUploadModal> = ({isOpen, setIsOpen, videoId}) => {
+
+    const {mutate:deleteVideo} = useMutation('videoDelete on close', () => VideoService.delete(videoId), {
+        onSuccess: () => setIsOpen(false)
+    })
+
     return (
-        <Transition show={isOpen} as={Fragment}>
+        <Transition  show={isOpen} as={Fragment}>
             <Dialog
-                onClose={() => setIsOpen(false)}
+                onClose={() => deleteVideo()}
+
                 className={styles.modal}>
                 <Transition.Child
                     as={Fragment}
