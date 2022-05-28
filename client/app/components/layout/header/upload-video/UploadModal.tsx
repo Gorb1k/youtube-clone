@@ -9,14 +9,17 @@ import {VideoService} from "../../../../services/video/video.service";
 
 const UploadModal: FC<IUploadModal> = ({isOpen, setIsOpen, videoId}) => {
 
-    const {mutate:deleteVideo} = useMutation('videoDelete on close', () => VideoService.delete(videoId), {
-        onSuccess: () => setIsOpen(false)
-    })
+    const {mutate:deleteVideo} = useMutation('videoDelete on close', () => VideoService.delete(videoId))
+
+
 
     return (
-        <Transition  show={isOpen} as={Fragment}>
+        <Transition show={isOpen} as={Fragment}>
             <Dialog
-                onClose={() => deleteVideo()}
+                onClose={() => {
+                    if (isOpen) deleteVideo()
+                    setIsOpen(false)
+                }}
 
                 className={styles.modal}>
                 <Transition.Child
@@ -29,7 +32,7 @@ const UploadModal: FC<IUploadModal> = ({isOpen, setIsOpen, videoId}) => {
                     leaveTo="opacity-0"
                 >
                     {/* The backdrop, rendered as a fixed sibling to the panel container */}
-                    <div className={styles.overlay} aria-hidden="true"/>
+                    <Dialog.Overlay className={styles.overlay} aria-hidden="true"/>
                 </Transition.Child>
                 {/* Full-screen container to center the panel */}
                 <div className={styles.wrapper}>
