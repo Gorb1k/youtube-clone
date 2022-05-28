@@ -1,20 +1,23 @@
 import {FC} from 'react';
 import styles from './FileInput.module.scss'
+import {IFileUploadInput} from "./file-input.interface";
+import {useUploadFile} from "../../../hooks/useUploadFile";
 
 
 
-const FileInput:FC = () => {
+const FileInput:FC<IFileUploadInput> = ({title,onChange, folder}) => {
+
+    const {uploadFile} = useUploadFile(onChange, folder)
+
     return (
         <div className={styles.wrapper}>
-            <h1>Please, upload an video.</h1>
             <div className={styles.file}>
-                <div>
+                {title && <h1>{title}</h1>}
                     <label>
                         <span className="sr-only">Choose File</span>
-                        <input type="file"
+                        <input type="file" onChange={uploadFile}
                                className={styles.input}/>
                     </label>
-                </div>
             </div>
         </div>
 

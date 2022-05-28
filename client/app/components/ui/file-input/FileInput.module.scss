@@ -1,21 +1,25 @@
 
 .wrapper {
   @apply flex w-full h-full absolute left-0 top-0;
-
   .file {
-    @apply m-auto;
-    input[type=file], /* FF, IE7+, chrome (except button) */
-    input[type=file]::-webkit-file-upload-button { /* chromes and blink button */
-      cursor: pointer; //поитер для файл импута по другому не нашел
+    @apply m-auto flex flex-col items-center;
+    >h1 {
+      @apply text-xl font-semibold mb-5 inline-block;
     }
-
-    .input {
-      @apply block w-full text-sm
-      text-gray-500 file:mr-4 file:py-2
-      file:px-4 file:rounded-full file:border-0
-      file:text-sm file:font-semibold file:bg-blue-50
-      file:text-blue-700 hover:file:bg-blue-100
-    } //стили взял из инета для кастомизации файл импута
+    > label {
+      @apply block;
+      input[type=file], /* FF, IE7+, chrome (except button) */
+      input[type=file]::-webkit-file-upload-button { /* chromes and blink button */
+        cursor: pointer; //поитер для файл импута по другому не нашел
+      }
+      .input {
+        @apply block w-full text-sm
+        text-gray-500 file:mr-4 file:py-2
+        file:px-4 file:rounded-full file:border-0
+        file:text-sm file:font-semibold file:bg-blue-50
+        file:text-blue-700 hover:file:bg-blue-100
+      } //стили взял из инета для кастомизации файл импута
+    }
   }
 
 }

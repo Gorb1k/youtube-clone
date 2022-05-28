@@ -1,9 +1,15 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const getContentType = () => ({
-    'Content-Type': 'application/json'
-})
+export const getContentType = (type?:'file') => {
+
+    switch(type) {
+        case 'file' :
+            return {"Content-Type": "multipart/form-data"}
+        default :
+            return {'Content-Type': 'application/json'}
+    }
+}
 
 export const axiosClassic = axios.create({
 

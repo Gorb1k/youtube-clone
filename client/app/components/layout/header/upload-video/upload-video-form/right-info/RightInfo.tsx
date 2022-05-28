@@ -2,26 +2,30 @@ import React, {FC} from 'react';
 import styles from "../UploadVideoForm.module.scss";
 import Link from "next/link";
 
-const RightInfo:FC = () => {
+interface IRightVideo {
+    thumbnailPath?:string
+    videoId:string
+    fileName:string
+}
+
+const RightInfo:FC<IRightVideo> = ({thumbnailPath, videoId, fileName}) => {
     return (
         <div className={styles.right}>
-            <div className={styles.thumbnail}>
-                Uploading video...
-            </div>
+            {!thumbnailPath && <div className={styles.thumbnail}>Uploading video...</div>}
             <div className={styles.details}>
                 <div>
                     <span>Video link</span>
                     <span>
-                        <Link href={'/'}>
+                        <Link href={`/v/${videoId}`}>
                             <a>
-                                https://www.youtube.com
+                                https://www.youtube.com/v/{videoId}
                             </a>
                         </Link>
                     </span>
                 </div>
                 <div>
                     <span>Filename</span>
-                    <span>OLOLO.mov</span>
+                    <span>{fileName}</span>
                 </div>
             </div>
         </div>

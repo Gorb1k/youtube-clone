@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {SubmitHandler, useForm, Controller} from "react-hook-form";
 import {IVideoUpdate} from "../../../../../types/video.interface";
 import Input from "../../../../ui/input/Input";
@@ -8,11 +8,12 @@ import FooterForm from "./footer-form/FooterForm";
 import styles from './UploadVideoForm.module.scss'
 import RightInfo from "./right-info/RightInfo";
 import FileInput from "../../../../ui/file-input/FileInput";
+import {IMediaResponse} from "../../../../../services/media-service/MediaService";
 
 
-const UploadVideoForm: FC = () => {
+const UploadVideoForm: FC<{videoId:string}> = ({videoId}) => {
 
-    const {watch, register, formState: {errors}, control, handleSubmit} = useForm<IVideoUpdate>({
+    const {setValue ,watch, register, formState: {errors}, control, handleSubmit} = useForm<IVideoUpdate>({
         mode: 'onChange'
     })
 
@@ -21,9 +22,16 @@ const UploadVideoForm: FC = () => {
     }
 
     const videoPath = watch('videoPath')
+    const [videoFileName, setVideoFileName] = useState('')
 
+    const handleUploadVideo = (value:IMediaResponse) => {
+        setValue('videoPath', value.url)
+        setValue('name', value.name)
+        setVideoFileName(value.name)
+    }
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+
             {!!videoPath
                 ? <>
                     <div className={styles.left}>
@@ -50,10 +58,19 @@ const UploadVideoForm: FC = () => {
                                     isEnabled={!!value}/>}
                         />
                     </div>
-                    <RightInfo/>
+                    <RightInfo videoId={videoId} fileName={videoFileName}/>
                     <FooterForm/>
                 </>
-                : <FileInput/>
+                : <Controller
+                    control={control}
+                    name={'videoPath'}
+                    render={() =>
+                        <FileInput title={' Upload video first, please.'}
+                                   onChange={handleUploadVideo}
+                                   folder={'videos'}/>
+                    }
+                />
+
             }
         </form>
     );

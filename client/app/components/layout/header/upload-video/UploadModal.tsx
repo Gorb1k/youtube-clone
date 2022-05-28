@@ -5,7 +5,7 @@ import styles from './VideoUpload.module.scss'
 import UploadVideoForm from "./upload-video-form/UploadVideoForm";
 
 
-const UploadModal: FC<IUploadModal> = ({isOpen, setIsOpen}) => {
+const UploadModal: FC<IUploadModal> = ({isOpen, setIsOpen, videoId}) => {
     return (
         <Transition show={isOpen} as={Fragment}>
             <Dialog
@@ -38,7 +38,7 @@ const UploadModal: FC<IUploadModal> = ({isOpen, setIsOpen}) => {
                         >
                             {/* The actual dialog panel  */}
                             <Dialog.Panel className={styles.window}>
-                                <UploadVideoForm/>
+                                <UploadVideoForm videoId={videoId}/>
                             </Dialog.Panel>
                         </Transition.Child>
                     </div>
