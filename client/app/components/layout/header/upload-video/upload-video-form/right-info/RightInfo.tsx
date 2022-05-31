@@ -14,7 +14,11 @@ const RightInfo: FC<IRightVideo> = ({isLoaded, thumbnailPath, videoId, fileName}
     return (
         <div className={styles.right}>
             {!thumbnailPath
-                ? <div className={styles.thumbnail}>Uploading video...</div>
+                ? <div className={styles.thumbnail}>
+                    {
+                        !isLoaded ? 'Video Uploading...' : 'Should upload a thumbnail'
+                    }
+                </div>
                 : <Image src={thumbnailPath} width={344} height={200}/>
             }
             <div className={styles.details}>

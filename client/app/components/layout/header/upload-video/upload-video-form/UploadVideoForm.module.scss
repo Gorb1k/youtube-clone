@@ -19,9 +19,9 @@
             @apply text-gray-400 mb-1;
           }
           &:last-child {
-
+            @apply truncate;
             >a {
-              @apply text-primary opacity-80
+              @apply text-primary opacity-80;
             }
           }
         }

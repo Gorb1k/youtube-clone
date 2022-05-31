@@ -1,8 +1,5 @@
 
-.wrapper {
-  @apply flex w-full h-full absolute left-0 top-0;
   .file {
-    @apply m-auto flex flex-col items-center;
     >h1 {
       @apply text-xl font-semibold mb-5 inline-block;
     }
@@ -22,4 +19,3 @@
     }
   }
 
-}

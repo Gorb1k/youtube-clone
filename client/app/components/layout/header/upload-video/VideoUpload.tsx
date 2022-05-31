@@ -10,7 +10,6 @@ const VideoUpload:FC = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [videoId, setVideoId] = useState<string>('')
-
     const {mutate} = useMutation('create video', () => VideoService.create(), {
         onSuccess: ({data}) => {
             setVideoId(data)

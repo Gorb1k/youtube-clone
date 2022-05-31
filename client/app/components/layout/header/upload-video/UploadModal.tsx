@@ -12,7 +12,6 @@ const UploadModal: FC<IUploadModal> = ({isOpen, setIsOpen, videoId}) => {
     const {mutate:deleteVideo} = useMutation('videoDelete on close', () => VideoService.delete(videoId))
 
 
-
     return (
         <Transition show={isOpen} as={Fragment}>
             <Dialog
@@ -47,9 +46,10 @@ const UploadModal: FC<IUploadModal> = ({isOpen, setIsOpen, videoId}) => {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
+
                             {/* The actual dialog panel  */}
                             <Dialog.Panel className={styles.window}>
-                                <UploadVideoForm videoId={videoId}/>
+                                <UploadVideoForm videoId={videoId} setIsOpen={setIsOpen}/>
                             </Dialog.Panel>
                         </Transition.Child>
                     </div>
