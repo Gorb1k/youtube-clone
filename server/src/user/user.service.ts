@@ -30,7 +30,13 @@ export class UserService {
         }).addFields({
             videosCount: {
                 $size: '$videos' //выводит колличество полученных эементов
-            }
+            },
+                channelViews: {
+                    $sum: '$videos.views'
+                },
+                channelLikes: {
+                    $sum: '$videos.like'
+                }
         }).project({
             __v:0,
             password:0, //убираем ненужные поля

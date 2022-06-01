@@ -48,6 +48,7 @@ export class VideoService {
         return this.videoModel
             .find(options, '-__v')
             .sort({createdAt: 'desc'})
+            .populate('user', 'name avatarPath isVerified')
             .exec()
     }
 

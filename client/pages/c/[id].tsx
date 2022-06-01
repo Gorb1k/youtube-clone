@@ -4,6 +4,7 @@ import {VideoService} from "../../app/services/video/video.service";
 import {UserService} from "../../app/services/user/user.service";
 import Channel from "../../app/components/pages/channel/Channel";
 import {IUser} from "../../app/types/user.interface";
+import {IVideo} from "../../app/types/video.interface";
 
 const ChannelPage: NextPage<IChannel> = (props) => {
     return <Channel {...props}/>
@@ -44,7 +45,8 @@ export const getStaticProps: GetStaticProps = async ({params}) => { //в про�
         return {
             props: {
                 videos,
-                channel
+                channel,
+                randomVideo: videos.sort(() => Math.random() - 0.5)[0],
             } as IChannel,
             revalidate: 60
         }
@@ -54,7 +56,8 @@ export const getStaticProps: GetStaticProps = async ({params}) => { //в про�
         return {
             props: {
                 videos: [],
-                channel: {} as IUser
+                channel: {} as IUser,
+                randomVideo: {} as IVideo
             } as IChannel
         }
     }

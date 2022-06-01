@@ -7,7 +7,7 @@ const MenuItem:FC<ImMenuItem> = (props) => {
         <li>
             <Link href={props.link}>
                 <a>
-                    <img src={props.image}
+                    <img src={`http://localhost:3000/${props.image}`}
                          alt={props.title}/>
                     <b>{props.title}</b>
                 </a>

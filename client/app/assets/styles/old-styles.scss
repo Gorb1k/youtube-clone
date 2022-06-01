@@ -263,43 +263,40 @@ img {
     cursor: pointer;
   }
 }
+#recommended {
+  padding: 0 $gutter40;
 
-#wrapper_content {
-  > .left_side {
-    #recommended {
-      padding: 0 $gutter40;
+  > .top_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
 
-      > .top_block {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 25px;
-
-        > .sort {
-          font-weight: 500;
-        }
-      }
-
-      > .catalog {
-
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-
-        > div {
-          flex: 1 1 calc((100% / 4) - 1rem);
-          width: 23%;
-          margin-bottom: 10px;
-        }
-
-        // Этот блок делает один из маленьких элементов большим
-        //> .video_big_item {
-        //  width: 46%;
-        //  position: relative;
-        //}
-      }
+    > .sort {
+      font-weight: 500;
     }
   }
+
+  > .catalog {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    > div {
+      flex: 1 1 calc((100% / 4) - 1rem);
+      width: 23%;
+      margin-bottom: 10px;
+    }
+
+    // Этот блок делает один из маленьких элементов большим
+    //> .video_big_item {
+    //  width: 46%;
+    //  position: relative;
+    //}
+  }
+}
+#wrapper_content {
 
   > .right_side {
     width: 25%;

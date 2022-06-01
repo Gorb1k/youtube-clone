@@ -8,6 +8,8 @@ export interface IUser {
     subscribersCount:number
     videosCount?:number
     isVerified?:boolean
+    channelViews?:number
+    channelLikes?:number
     createdAt:string
     updatedAt:string
 }

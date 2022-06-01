@@ -11,10 +11,12 @@ import styles from './VideoItem.module.scss'
 import Link from "next/link";
 import {IVideoItem} from "./video-item.interface";
 import cn from "classnames";
+import VideoStatistics from "./video-statistics/VideoStatistics";
 
 
 const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar, tag}) => {
 
+    console.log(item)
 
     const avatar = item.user?.avatarPath || ''
 
@@ -23,7 +25,7 @@ const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar, tag}) => {
             <Link href={`/v/${item._id}`}>
                 <a>
                     <div className={styles.thumbnail}>
-                        <Image src={item.thumbnailPath} alt={item.name} width={200} height={110} layout={"responsive"}/>
+                        <Image src={item.thumbnailPath || ''} alt={item.name} width={200} height={110} layout={"responsive"}/>
                         <VideoDuration videoPath={item.videoPath}/>
                         {tag && <div className={styles.hot}>{tag}</div>}
                         {isAvatar && (
@@ -41,11 +43,7 @@ const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar, tag}) => {
                     {item.description}
                 </div>
             )}
-            <div className={styles.number_info}>
-                <div className={styles.views}>VIEWS {nFormatter(item.views)}</div>
-                {isLarge && <div className={styles.likes}>LIKES {nFormatter(item.like)}</div>}
-                <div className={styles.date}>{dayjs(new Date(item.createdAt)).fromNow()}</div>
-            </div>
+            <VideoStatistics views={item.views} likes={isLarge ? item.like : undefined} createdAt={item.createdAt}/>
         </div>
     )
 }
