@@ -21,9 +21,9 @@ export class UserService {
     async getUserWithCount(_id: Types.ObjectId) {
 
         return this.userModel.aggregate()
-            .match({_id}) // для возврата только пользователя с нужным ID
+            .match({_id}) // для возврата только пользователя c нужным ID
             .lookup({
-            from: 'Video', //из кокой коллекции берем (Таблица Video связана с таблицей User через поле user)
+            from: 'Video', //из кокой коллекции берем (Таблица Video связана c таблицей User через поле user)
             foreignField: 'user', // это название поля в таблице Video (foreignKey)
             localField: '_id', // название поля в таблице User (primaryKey)
             as: 'videos' // это название поля, куда мы выводим полученные данные
@@ -38,7 +38,6 @@ export class UserService {
         }).exec() //выполняем запрос к БД чтобы return вернул обработанный ответ от БД
             .then((data) => data[0]) // забираем из массива нужный элемент
     }
-
     async updateProfile(_id: Types.ObjectId, dto: UserDto) {
         const user = await this.getById(_id)
 
@@ -59,12 +58,14 @@ export class UserService {
 
         return user
     }
-
     async getMostPopular() {
         return this.userModel
             .find({subscribersCount: {$gt: 0}}, '-password -__v')
             .sort({subscribersCount: -1})
             .exec()
+    }
+    async getAll() {
+        return this.userModel.find({}, '-password -__v').exec()
     }
 
 }

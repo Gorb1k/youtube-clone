@@ -12,5 +12,11 @@ export const UserService = {
     },
     async updateProfile(body:IProfileUpdate) {
         return axiosWithAuth.put<IUser[]>('/user/profile', body)
+    },
+    async getAll() {
+        return axiosClassic.get<IUser[]>('/user')
+    },
+    async getUserById(id:string) {
+        return axiosClassic.get<IUser>(`/user/${id}`)
     }
 }

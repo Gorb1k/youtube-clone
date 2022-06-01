@@ -50,6 +50,16 @@ export class UserController {
     async getMostPopular() {
         return this.userService.getMostPopular()
     }
+    @HttpCode(200)
+    @Get(':id')
+    async getUser(@Param('id', IdValidationPipe) id: string) {
+        return this.userService.getUserWithCount(new Types.ObjectId(id)) //Обязательно нужно преобразовать string в ObjectId
+    }
 
+    @HttpCode(200)
+    @Get()
+    async getAll() {
+        return this.userService.getAll()
+    }
 
 }
