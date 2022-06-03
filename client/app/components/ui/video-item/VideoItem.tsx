@@ -16,8 +16,6 @@ import VideoStatistics from "./video-statistics/VideoStatistics";
 
 const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar, tag}) => {
 
-    console.log(item)
-
     const avatar = item.user?.avatarPath || ''
 
     return (

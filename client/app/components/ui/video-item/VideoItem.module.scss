@@ -41,13 +41,4 @@
     color: $gray;
     margin-bottom: 20px;
   }
-
-  > .number_info {
-    @apply flex items-center justify-between;
-
-    > div {
-      @apply uppercase font-semibold truncate;
-      color: $gray;
-    }
-  }
 }

@@ -10,9 +10,9 @@ const ChannelInfo: FC<{ channel: IUser }> = ({channel}) => {
     const channelViews = channel.channelViews || 0
     const channelLikes = channel.channelLikes || 0
     return (
-        <div>
+        <div className={cn(styles.videoStat, 'videoStat')}>
             <div className={styles.info}>
-                <Image src={channel.avatarPath || ''} alt={channel.name} width={70} height={70} quality={90}/>
+                <Image src={channel.avatarPath || ''} alt={channel.name} width={100} height={100} quality={90}/>
                 <div>
                     <div className={cn(styles.name, {verified: channel.isVerified})}>
                         {channel.name}

@@ -17,7 +17,7 @@ const Sidebar: FC = () => {
     return user
         ?
         <section className="sidebar">
-            <Link href="/client/app/components/pages">
+            <Link href="/">
                 <a className="logo" rel='noreferrer'>
                     <Image src={logoImg.src} alt="Youtube" width={169} height={55}/>
                 </a>
