@@ -1,0 +1,19 @@
+@import "../../../assets/styles/variables";
+
+.info {
+  @apply text-center flex flex-wrap items-center mb-2;
+  > span {
+    @apply block rounded-full mx-auto mb-2;
+
+  }
+  >div {
+    @apply ml-3;
+    > .name {
+      @apply font-bold text-lg;
+    }
+    > .location {
+      @apply text-sm text-left;
+      color: $gray;
+    }
+  }
+}

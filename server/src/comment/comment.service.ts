@@ -17,6 +17,7 @@ export class CommentService {
         return this.commentModel
             .find({video: videoId}, '-__v')
             .sort({createdAt: 'desc'})
+            .populate('user', 'name location avatarPath isVerified')
             .exec()
     }
 

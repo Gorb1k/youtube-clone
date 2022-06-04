@@ -1,0 +1,6 @@
+.commentItem {
+  @apply mt-6;
+  >p {
+   @apply text-gray-600 my-2 text-base;
+  }
+}

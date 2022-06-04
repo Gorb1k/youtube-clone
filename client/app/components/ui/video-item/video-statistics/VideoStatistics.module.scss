@@ -6,5 +6,8 @@
   > div {
     @apply uppercase font-semibold truncate;
     color: $gray;
+    &.subscribers {
+      @apply text-primary
+    }
   }
 }

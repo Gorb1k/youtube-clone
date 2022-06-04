@@ -12,9 +12,14 @@ export class VideoService {
     ) {
     }
 
-    async getByVideoId(_id: Types.ObjectId, isPublished:boolean= true){
+    async getByVideoId(_id: Types.ObjectId, isPublished: boolean = true) {
         //Check authUserId === video.userId Обязательно!
-        const video = await this.videoModel.findOne(isPublished ? {_id, isPublished:true} : {_id}, '-__v') //второй параметр исключает поля, которые нам не нужны
+        const video = await this.videoModel
+            .findOne(isPublished ? {
+                _id,
+                isPublished: true
+            } : {_id}, '-__v') //второй параметр исключает поля, которые нам не нужны
+            .populate('user', 'name avatarPath isVerified location subscribersCount')
         if (!video) throw new NotFoundException('Video is not found')
         return video
     }
@@ -93,9 +98,16 @@ export class VideoService {
         return updatedVideo
     }
 
-    async updateLikes(_id: Types.ObjectId, type?: 'inc' | 'dec') {
-        if (type !== 'inc' && type !== 'dec') throw new BadRequestException('Invalid type (provide inc or dec type)')
-        const updatedVideo = await this.videoModel.findByIdAndUpdate(_id, {$inc: {like: type === 'inc' ? 1 : -1}}, {new: true}).exec()
+    async updateLikes(videoId: string, userId: Types.ObjectId) {
+
+        const updatedVideo = await this.videoModel.findByIdAndUpdate(
+            videoId,
+            {
+                // $inc: {like: type === 'inc' ? 1 : -1} // сработает, если ввесли доп таблицу лайков, где у 1 видео - 1 юзер
+                $inc: {like: 1}
+            },
+            {new: true}
+        ).exec()
         if (!updatedVideo) throw new NotFoundException('Video is not found')
 
         return updatedVideo

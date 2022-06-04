@@ -29,7 +29,7 @@ export const VideoService = {
     async updateViews(id:string) {
         return axiosClassic.put<IVideo>(`/video/update-views/${id}`)
     },
-    async updateLikes(id:string, type: 'inc'|'dec') {
+    async updateLikes(id:string) {
         return axiosWithAuth.put<IVideo>(`/video/update-likes/${id}`)
     },
     async delete(id:string) {
