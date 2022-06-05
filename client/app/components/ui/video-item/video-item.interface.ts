@@ -6,4 +6,5 @@ export interface IVideoItem {
     isLarge?:boolean
     isAvatar?:boolean
     tag?:string
+    removeHandler?: (videoId:string) => {}
 }

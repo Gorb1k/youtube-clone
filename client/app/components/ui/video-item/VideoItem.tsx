@@ -12,14 +12,16 @@ import Link from "next/link";
 import {IVideoItem} from "./video-item.interface";
 import cn from "classnames";
 import VideoStatistics from "./video-statistics/VideoStatistics";
+import {BiTrash} from "react-icons/bi";
 
 
-const VideoItem: FC<IVideoItem> = ({item, isLarge, isAvatar, tag}) => {
+const VideoItem: FC<IVideoItem> = ({removeHandler, item, isLarge, isAvatar, tag}) => {
 
     const avatar = item.user?.avatarPath || ''
 
     return (
         <div className={styles.video_item}>
+            {!!removeHandler && <button><BiTrash/></button>}
             <Link href={`/v/${item._id}`}>
                 <a>
                     <div className={styles.thumbnail}>

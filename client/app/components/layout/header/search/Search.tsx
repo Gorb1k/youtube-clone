@@ -1,7 +1,6 @@
 import {FC} from 'react';
 import styles from './Search.module.scss'
-import {useQuery} from "react-query";
-import {VideoService} from "../../../../services/video/video.service";
+
 import {useSearch} from "../../../../hooks/useSearch";
 import VideoItem from "../../../ui/video-item/VideoItem";
 

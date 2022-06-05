@@ -7,7 +7,6 @@ const Recommended:FC<{newVideos: IVideo[]}> = ({newVideos}) => {
 
     return (
         <div id="recommended">
-
             <div className="top_block">
                 <div className="left_title title_gray">
                     <h2>Brand new video</h2>
