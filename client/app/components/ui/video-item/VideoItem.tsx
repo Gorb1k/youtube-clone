@@ -1,7 +1,5 @@
 import {FC} from "react";
-import {IVideo} from "../../../types/video.interface";
 import Image from "next/image";
-import {nFormatter} from "../../../utils/numberFormatter";
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime' // plugin для расширения dayJS
 dayjs.extend(relativeTime) // Расширение функционала библиотеки dayJS, чтобы работала fromNow()
@@ -21,7 +19,7 @@ const VideoItem: FC<IVideoItem> = ({removeHandler, item, isLarge, isAvatar, tag}
 
     return (
         <div className={styles.video_item}>
-            {!!removeHandler && <button><BiTrash/></button>}
+            {!!removeHandler && <button className={'absolute top-3 right-3 z-10'} onClick={() => removeHandler(item._id)}><BiTrash className={'text-lg text-red-500'}/></button>}
             <Link href={`/v/${item._id}`}>
                 <a>
                     <div className={styles.thumbnail}>

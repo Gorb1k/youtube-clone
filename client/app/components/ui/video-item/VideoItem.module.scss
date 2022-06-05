@@ -1,7 +1,7 @@
 @import "../../../assets/styles/variables";
 
 .video_item {
-  @apply block;
+  @apply block relative;
   > a {
     >.thumbnail {
       @apply relative;

@@ -2,8 +2,11 @@ import {FC} from "react";
 import {IVideo} from "../../../../types/video.interface";
 import VideoItem from "../../../ui/video-item/VideoItem";
 
+interface IRec {newVideos: IVideo[], removeHandler?: (videoId:string) => void}
 
-const Recommended:FC<{newVideos: IVideo[]}> = ({newVideos}) => {
+const Recommended:FC<IRec> = ({newVideos, removeHandler}) => {
+
+
 
     return (
         <div id="recommended">
@@ -17,7 +20,7 @@ const Recommended:FC<{newVideos: IVideo[]}> = ({newVideos}) => {
 
             <div className="catalog">
                 {newVideos.map((video) =>
-                    <VideoItem key={video._id} item={video} isAvatar/>
+                    <VideoItem key={video._id} item={video} isAvatar removeHandler={removeHandler}/>
                 )}
             </div>
 
