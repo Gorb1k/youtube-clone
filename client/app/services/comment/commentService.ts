@@ -1,7 +1,7 @@
 import {IComment, ICommentCreate} from "../../types/comment.interface";
 import axiosWithAuth, {axiosClassic} from "../../api/interceptors";
 
-export const commentService = {
+export const CommentService = {
     async getByVideoId(videoId:string) {
         return axiosClassic.get<IComment[]>(`/comment/by-video/${videoId}`)
     },

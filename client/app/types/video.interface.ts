@@ -14,6 +14,7 @@ export interface IVideo {
     updatedAt:string
 }
 
+export type IVideoFields  = 'isPublished' |'thumbnailPath' | 'description' |'videoPath' |'name'
 
 export interface IVideoUpdate extends Pick<IVideo,  'isPublished' |'thumbnailPath' | 'description' |'videoPath' |'name' >{
 

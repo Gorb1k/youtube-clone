@@ -10,16 +10,31 @@ import Link from "next/link";
 import {IVideoItem} from "./video-item.interface";
 import cn from "classnames";
 import VideoStatistics from "./video-statistics/VideoStatistics";
-import {BiTrash} from "react-icons/bi";
+import {BiEdit, BiTrash} from "react-icons/bi";
+import {useRouter} from "next/router";
 
 
-const VideoItem: FC<IVideoItem> = ({removeHandler, item, isLarge, isAvatar, tag}) => {
+const VideoItem: FC<IVideoItem> = ({isUpdateLink, removeHandler, item, isLarge, isAvatar, tag}) => {
 
     const avatar = item.user?.avatarPath || ''
+    const router = useRouter()
+    const videoId = String(item._id)
 
     return (
         <div className={styles.video_item}>
-            {!!removeHandler && <button className={'absolute top-3 right-3 z-10'} onClick={() => removeHandler(item._id)}><BiTrash className={'text-lg text-red-500'}/></button>}
+            {
+                !!removeHandler &&
+                <button className={' bg-white absolute top-3 right-3 z-10'} onClick={() => removeHandler(item._id)}>
+                    <BiTrash className={'text-lg text-red-700'}/>
+                </button>
+            }
+            {
+                isUpdateLink &&
+                <button className={'bg-white absolute top-10 right-3 z-10'} onClick={() => router.push(`/video/edit/${videoId}`)}>
+                    <BiEdit className={'text-lg text-blue-700'}/>
+                </button>
+            }
+
             <Link href={`/v/${item._id}`}>
                 <a>
                     <div className={styles.thumbnail}>

@@ -5,7 +5,7 @@ import styles from './Comments.module.scss'
 import {useAuth} from "../../../../hooks/useAuth";
 import AddCommentForm from "./AddCommentForm";
 import {useQuery} from "react-query";
-import {commentService} from "../../../../services/comment/comment.service";
+import {CommentService} from "../../../../services/comment/commentService";
 import CommentItem from "./CommentItem";
 import Loader from "../../../ui/Loader";
 
@@ -17,7 +17,7 @@ const Comments: FC<{ videoId: string }> = ({videoId}) => {
         refetch,
         data: comments,
         isLoading
-    } = useQuery(['get comments', videoId], () => commentService.getByVideoId(videoId), {
+    } = useQuery(['get comments', videoId], () => CommentService.getByVideoId(videoId), {
         select: (data) => data.data
     })
 

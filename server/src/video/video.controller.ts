@@ -18,6 +18,7 @@ import {Auth} from "../auth/decorators/auth.decorator";
 import {IdValidationPipe} from "../pipes/id.validation.pipe";
 import {CurrentUser} from "../user/decorators/user.decorator";
 
+
 @Controller('video')
 export class VideoController {
     constructor(private readonly videoService: VideoService) {
@@ -40,8 +41,8 @@ export class VideoController {
     }
     @Get('private/:id')
     @Auth()
-    async getByVideoIdPrivate(@Param('id', IdValidationPipe) id: Types.ObjectId) {
-        return this.videoService.getByVideoId(id, false)
+    async getByVideoIdPrivate(@Param('id', IdValidationPipe) id: string) {
+        return this.videoService.getByVideoId(new Types.ObjectId(id), false)
     }
 
     @Get()

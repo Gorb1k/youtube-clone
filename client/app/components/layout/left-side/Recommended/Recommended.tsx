@@ -2,9 +2,14 @@ import {FC} from "react";
 import {IVideo} from "../../../../types/video.interface";
 import VideoItem from "../../../ui/video-item/VideoItem";
 
-interface IRec {newVideos: IVideo[], removeHandler?: (videoId:string) => void}
+interface IRec {
+    newVideos: IVideo[]
+    removeHandler?: (videoId:string) => void
+    title?: string
+    isUpdateLink?: boolean
+}
 
-const Recommended:FC<IRec> = ({newVideos, removeHandler}) => {
+const Recommended:FC<IRec> = ({isUpdateLink, newVideos, removeHandler, title}) => {
 
 
 
@@ -12,7 +17,7 @@ const Recommended:FC<IRec> = ({newVideos, removeHandler}) => {
         <div id="recommended">
             <div className="top_block">
                 <div className="left_title title_gray">
-                    <h2>Brand new video</h2>
+                    <h2>{!!title ? title : 'Brand new video'}</h2>
 
                 </div>
                 <div className="sort">By View Trending</div>
@@ -20,7 +25,7 @@ const Recommended:FC<IRec> = ({newVideos, removeHandler}) => {
 
             <div className="catalog">
                 {newVideos.map((video) =>
-                    <VideoItem key={video._id} item={video} isAvatar removeHandler={removeHandler}/>
+                    <VideoItem isUpdateLink={isUpdateLink} key={video._id} item={video} isAvatar removeHandler={removeHandler}/>
                 )}
             </div>
 

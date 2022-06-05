@@ -23,7 +23,7 @@ const Studio:FC = () => {
         <Layout title={'Youtube v2.0'}>
             <div style={{backgroundColor: '#F0F1F7'}} className={'p-7'}>
                 <StudioItem className={styles.item}>
-                    {isLoading ? <Loader count={5}/> : <Recommended newVideos={data || []} removeHandler={mutate}/>}
+                    {isLoading ? <Loader count={5}/> : <Recommended isUpdateLink title={'My videos'} newVideos={data || []} removeHandler={mutate}/>}
                 </StudioItem>
             </div>
         </Layout>

@@ -5,7 +5,7 @@ import {validEmail} from "../../../layout/header/auth-form/auth-form.constant";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {useMutation, UseQueryResult} from "react-query";
 import {ICommentCreate} from "../../../../types/comment.interface";
-import {commentService} from "../../../../services/comment/comment.service";
+import {CommentService} from "../../../../services/comment/commentService";
 import {MdSend} from "react-icons/md";
 
 
@@ -20,7 +20,7 @@ const AddCommentForm: FC<IAddComment> = ({videoId, refetch}) => {
         mode: 'onChange'
     })
 
-    const {mutateAsync} = useMutation('add comment', (data: ICommentCreate) => commentService.create({
+    const {mutateAsync} = useMutation('add comment', (data: ICommentCreate) => CommentService.create({
         ...data,
         videoId
     }), {

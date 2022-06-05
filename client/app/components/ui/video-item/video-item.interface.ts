@@ -7,4 +7,5 @@ export interface IVideoItem {
     isAvatar?:boolean
     tag?:string
     removeHandler?: (videoId:string) => void
+    isUpdateLink?:boolean
 }
