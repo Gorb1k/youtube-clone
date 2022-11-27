@@ -14,6 +14,7 @@ const Video: FC<IVideoPage> = ({ video }) => {
   )
 
   useEffect(() => {
+    debugger
     mutate()
   }, [])
 
