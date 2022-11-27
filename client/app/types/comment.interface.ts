@@ -1,14 +1,14 @@
-import {IUser} from "./user.interface";
+import { IUser } from './user.interface'
 
 export interface IComment {
-    _id: string
-    user: IUser
-    video: string
-    message: string
-    createdAt: string
-    updatedAt: string
+  _id: string
+  user: IUser
+  video: string
+  message: string
+  createdAt: string
+  updatedAt: string
 }
 
 export interface ICommentCreate extends Pick<IComment, 'message'> {
-    videoId: string
+  videoId: string
 }

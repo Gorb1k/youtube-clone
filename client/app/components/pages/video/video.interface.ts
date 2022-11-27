@@ -1,7 +1,7 @@
-import {IUser} from "../../../types/user.interface";
-import {IVideo} from "../../../types/video.interface";
+import { IUser } from '../../../types/user.interface'
+import { IVideo } from '../../../types/video.interface'
 
 export interface IVideoPage {
-    video:IVideo
-    channel:IUser
+  video: IVideo
+  channel: IUser
 }

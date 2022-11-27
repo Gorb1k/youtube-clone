@@ -1,17 +1,16 @@
-import {FC, PropsWithChildren} from 'react';
-import cn from "classnames";
+import { FC, PropsWithChildren } from 'react'
+import cn from 'classnames'
 import styles from './Studio.module.scss'
 
 interface IStudioItem {
-    className?: string
+  className?: string
 }
 
-const StudioItem:FC<PropsWithChildren<IStudioItem>> = ({children, className}) => {
-    return (
-        <div className={cn(styles.item, className)}>
-            {children}
-        </div>
-    );
-};
+const StudioItem: FC<PropsWithChildren<IStudioItem>> = ({
+  children,
+  className,
+}) => {
+  return <div className={cn(styles.item, className)}>{children}</div>
+}
 
-export default StudioItem;
+export default StudioItem

@@ -1,4 +1,4 @@
 export interface ITogglePublished {
-    isEnabled:boolean
-    clickHandler: () => void
+  isEnabled: boolean
+  clickHandler: () => void
 }

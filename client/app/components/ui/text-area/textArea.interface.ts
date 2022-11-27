@@ -1,10 +1,10 @@
-import {FieldError} from "react-hook-form";
-import { TextareaHTMLAttributes} from "react";
-
+import { FieldError } from 'react-hook-form'
+import { TextareaHTMLAttributes } from 'react'
 
 export interface ITextAreaProps {
-    error?:FieldError | undefined
+  error?: FieldError | undefined
 }
-type TypeInputPropsField = TextareaHTMLAttributes<HTMLTextAreaElement> & ITextAreaProps
+type TypeInputPropsField = TextareaHTMLAttributes<HTMLTextAreaElement> &
+  ITextAreaProps
 
-export interface ITextArea extends TypeInputPropsField {}
+export type ITextArea = TypeInputPropsField

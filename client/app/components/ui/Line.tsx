@@ -1,8 +1,7 @@
-import {FC} from "react";
+import { FC } from 'react'
 
+const Line: FC = () => {
+  return <div className="line" />
+}
 
-const Line:FC = () => {
-    return <div className="line"/>;
-};
-
-export default Line;
+export default Line

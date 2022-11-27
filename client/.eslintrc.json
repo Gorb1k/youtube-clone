@@ -1,3 +1,46 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "next",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        " *.tsx"
+      ]
+    }
+  ],
+  "parserOptions": {
+    "project": [
+      "./tsconfig.json"
+    ],
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "rules": {
+    "semi": "off",
+    "no-debugger": "error",
+    "react/react-in-jsx-scope": "off",
+    "require-jsdoc": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  }
 }
