@@ -25,6 +25,12 @@
       "git add"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
   "dependencies": {
     "@headlessui/react": "^1.6.2",
     "axios": "^0.27.2",
